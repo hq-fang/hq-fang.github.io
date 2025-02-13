@@ -20,7 +20,7 @@
   @include breakpoint($large) {
     @include span(10 of 12 last);
     @include prefix(0.5 of 12);
-    @include suffix(2 of 12);
+    @include suffix(0 of 12);
   }
 
   .page__inner-wrap {
@@ -73,7 +73,7 @@
   }
 
   a {
-    text-decoration: underline;
+    text-decoration: none;
 
     &:hover {
       text-decoration: underline;
@@ -398,4 +398,70 @@
   margin-bottom: 10px;
   font-size: $type-size-6;
   text-transform: uppercase;
+}
+
+
+.paper-box {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom: 1px #efefef solid;
+  padding: 2em 0 2em 0;
+  
+
+  .paper-box-image{
+      justify-content: center;
+      display: flex;
+      width: 100%;
+      order: 2;
+      img {
+          max-width: 400px;
+          box-shadow: 3px 3px 6px #888;
+          object-fit: cover;
+      }
+  }
+
+  .paper-box-image img,
+  .paper-box-image video {
+      max-width: 400px;
+      box-shadow: 3px 3px 6px #888;
+      object-fit: cover;
+  }
+  
+  .paper-box-text{
+      max-width: 100%;
+      order: 1;
+  }
+  
+  @include breakpoint($medium) {
+      .paper-box-image{
+          justify-content: left;
+          min-width: 200px;
+          max-width: 35%;
+          order: 1;
+      }
+      
+      .paper-box-text{
+          justify-content: left;
+          padding-left: 2em;
+          padding-top: 1em;
+          max-width: 65%;
+          order: 2;
+      }
+
+  }
+
+}
+
+.badge {
+  padding-left: .5rem;
+  padding-right: .5rem;
+  position: absolute;
+  margin-top: .5em;
+  margin-left: -.5em;
+  color: white;
+  background-color: rgba(0, 54, 159, 0.8);
+  font-size: .7em;
 }
