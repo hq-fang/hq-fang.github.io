@@ -465,3 +465,22 @@
   background-color: rgba(0, 54, 159, 0.8);
   font-size: .7em;
 }
+
+#handwave {
+  animation-name: handwave;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 75% 75%;
+  display: inline-block;
+  margin-right: 0.0em;
+}
+
+@keyframes handwave {
+  0% { transform: rotate(0.0deg); }
+  10% { transform: rotate(-10.0deg); }
+  20% { transform: rotate(12.0deg); }
+  30% { transform: rotate(-10.0deg); }
+  40% { transform: rotate(9.0deg); }
+  50% { transform: rotate(0.0deg); }
+  100% { transform: rotate(0.0deg); }
+}
