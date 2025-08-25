@@ -321,6 +321,61 @@
 
 
 /*
+   Theme and Hamburger Button
+   ========================================================================== */
+
+/* move the theme button to the right-most position */
+/* move the hamburger button to its left, and tweak its effect range */
+/* also align the arrow for the hamburger button */
+/* --- constants you can tweak --- */
+:root{
+  --theme-toggle-w: 1.00rem;   /* width of the theme icon */
+  --burger-w:       2.00rem;   /* hamburger button width */
+  --gap:            1.00rem;   /* space between them */
+  --controls-w:     calc(var(--burger-w) + var(--gap) + var(--theme-toggle-w));
+}
+
+/* 1) Reserve space for BOTH controls so Greedy Nav's width calc accounts for it */
+.greedy-nav{
+  position: relative;
+  padding-right: var(--controls-w);   /* key: shrink usable width for links */
+}
+
+/* 2) Place the theme toggle to the far right */
+.greedy-nav .visible-links #theme-toggle{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  list-style: none;
+  margin: 0;
+}
+.greedy-nav .visible-links #theme-toggle a{
+  width: var(--theme-toggle-w);
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+.greedy-nav .visible-links #theme-toggle a::before{ display: none; } /* kill underline bar */
+
+/* 3) Nudge the hamburger left so it sits just before the toggle */
+.greedy-nav button{
+  right: calc(var(--theme-toggle-w) + var(--gap));
+}
+
+/* move the little arrow so it sits under the hamburger (to the left of the gear) */
+.greedy-nav .hidden-links:before,
+.greedy-nav .hidden-links:after{
+  right: calc(10px + var(--theme-toggle-w) + var(--gap)); /* default 10px + gear + gap */
+}
+
+/* (Optional) if links still creep under on very small widths, tighten a bit more */
+@media (max-width: 520px){
+  .greedy-nav{ padding-right: calc(var(--controls-w) + 0.50rem); }
+}
+
+
+/*
    Navigation list
    ========================================================================== */
 
