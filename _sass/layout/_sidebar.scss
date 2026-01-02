@@ -262,3 +262,22 @@
     }
   }
 }
+
+
+/*
+   Follow Button
+   ========================================================================== */
+
+/* align the arrow for FOLLOW button */
+@media (max-width: 64em) {            /* same breakpoint where the arrow is shown */
+  .author__urls:before,
+  .author__urls:after{
+    left: auto;                       /* stop centering */
+    right: 20px;                      /* arrow sits near the top-right; tweak 10–16px */
+  }
+
+  /* (optional) make the inner arrow use the card bg var instead of hard #fff */
+  .author__urls:after{
+    border-color: var(--global-bg-color) transparent;
+  }
+}
