@@ -1,0 +1,81 @@
+name: update citations
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # once per day at 00:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write              # allow the workflow to push the JSON file
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: ensure citations folder exists
+        run: mkdir -p citations
+
+      - name: update number-only JSONs (no API key; self-caching)
+        shell: bash
+        run: |
+          set -euo pipefail
+          sleep $((RANDOM % 60))  # jitter
+
+          # map output filename -> paper id
+          declare -A PAPERS=(
+            ["cites_2508.07917.json"]="arXiv:2508.07917"
+            ["cites_2501.18564.json"]="arXiv:2501.18564"
+            ["cites_2505.09990.json"]="arXiv:2505.09990"
+            ["cites_2510.01642.json"]="arXiv:2510.01642"
+            ["cites_2602.07845.json"]="arXiv:2602.07845"
+          )
+
+          changed=0
+          for file in "${!PAPERS[@]}"; do
+            id="${PAPERS[$file]}"
+            url="https://api.semanticscholar.org/graph/v1/paper/${id}?fields=citationCount"
+
+            code=$(curl -sS --retry 5 --retry-delay 2 --retry-all-errors \
+              -w "%{http_code}" -o /tmp/s2.json "$url" || true)
+
+            if [[ "$code" != "200" ]]; then
+              echo "skip ${id}: upstream $code (rate limited or error). keeping previous value."
+              continue
+            fi
+
+            count=$(jq -r '.citationCount' /tmp/s2.json)
+            if [[ -z "$count" || "$count" == "null" ]]; then
+              echo "skip ${id}: no citationCount in response."
+              continue
+            fi
+
+            # read existing (strip whitespace); empty if file doesn't exist
+            current=""
+            if [[ -f "citations/$file" ]]; then
+              current="$(tr -d '[:space:]' < "citations/$file")"
+            fi
+
+            if [[ "$current" == "$count" ]]; then
+              echo "no change for $file (still $count)"
+              continue
+            fi
+
+            printf '%s\n' "$count" > "citations/$file"
+            git add "citations/$file"
+            changed=1
+            echo "updated citations/$file -> ${count} (was: ${current:-none})"
+          done
+
+          if [[ "$changed" == "1" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git commit -m "update citations"
+            git push
+          else
+            echo "nothing to commit."
+          fi
