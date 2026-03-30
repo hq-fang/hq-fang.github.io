@@ -1,0 +1,70 @@
+title: 'MolmoB0T: Large-Scale Simulation Enables Zero-Shot Manipulation'
+date: 2026-03-17
+selected: false
+selected_order: -1
+authors:
+  - name: Abhay Deshpande
+    marks: '*§'
+  - name: Maya Guru
+    marks: '*§'
+  - name: Rose Hendrix
+    marks: '*§'
+  - name: Snehal Jauhri
+    marks: '*§'
+  - name: Ainaz Eftekhar
+    marks: '§'
+  - name: Rohun Tripathi
+    marks: '§'
+  - name: Max Argus
+    marks: '§'
+  - name: Jordi Salvador
+    marks: '§'
+  - name: Haoquan Fang
+    marks: '§'
+    highlight: true
+  - name: Matthew Wallingford
+    marks: '§'
+  - name: Wilbert Pumacay
+    marks: '§'
+  - name: Yejin Kim
+    marks: '§'
+  - name: Quinn Pfeifer
+  - name: Ying-Chun Lee
+  - name: Piper Wolters
+  - name: Omar Rayyan
+  - name: Mingtong Zhang
+  - name: Jiafei Duan
+  - name: Karen Farley
+  - name: Winson Han
+  - name: Eli Vanderbilt
+  - name: Dieter Fox
+  - name: Ali Farhadi
+  - name: Georgia Chalvatzaki
+  - name: Dhruv Shah
+    marks: '§'
+  - name: Ranjay Krishna
+    marks: '§'
+venue:
+  - text: 'arXiv 2026'
+media:
+  type: video
+  src: /images/publications/20260317_molmob0t.mp4
+  alt: MolmoB0T teaser video
+  playback_rate: 3
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://arxiv.org/pdf/2603.16861'
+  - label: Blog
+    kind: blog
+    url: 'https://allenai.org/blog/molmobot-robot-manipulation'
+  - label: Post
+    kind: post
+    url: 'https://x.com/allen_ai/status/2031752021355667830'
+metrics:
+  citation_count: 0
+  github_stars: 
+citation:
+  provider: semanticscholar
+  id: 'arXiv:2603.16861'
+github_repo: 

@@ -1,0 +1,94 @@
+title: 'MolmoAct: Action Reasoning Models that can Reason in Space'
+date: 2025-08-12
+selected: true
+selected_order: 1
+authors:
+  - name: Jason Lee
+    marks: '*§'
+  - name: Jiafei Duan
+    marks: '*§'
+  - name: Haoquan Fang
+    marks: '*§'
+    highlight: true
+  - name: Yuquan Deng
+    marks: '§'
+  - name: Shuo Liu
+    marks: '§'
+  - name: Boyang Li
+    marks: '§'
+  - name: Bohan Fang
+    marks: '§'
+  - name: Jieyu Zhang
+    marks: '§'
+  - name: Yi Ru Wang
+    marks: '§'
+  - name: Sangho Lee
+  - name: Winson Han
+  - name: Wilbert Pumacay
+  - name: Angelica Wu
+  - name: Rose Hendrix
+    marks: '§'
+  - name: Karen Farley
+  - name: Eli VanderBilt
+  - name: Ali Farhadi
+  - name: Dieter Fox
+    marks: '§'
+  - name: Ranjay Krishna
+    marks: '§'
+venue:
+  - text: 'International Conference on Robotics and Automation (ICRA) 2026'
+  - text: 'Data @ CoRL 2025'
+    note: 'Best Paper Award Nominee'
+    note_variant: award
+  - text: 'Rational Robots @ CoRL 2025'
+    note: 'Best Paper Award Runner-up'
+    note_variant: award
+media:
+  type: video
+  src: /images/publications/20250812_molmoact.mp4
+  alt: MolmoAct teaser video
+  playback_rate: 3
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://arxiv.org/abs/2508.07917'
+  - label: Code
+    kind: code
+    url: 'https://github.com/allenai/molmoact'
+  - label: Blog
+    kind: blog
+    url: 'https://allenai.org/blog/molmoact'
+  - label: Models
+    kind: models
+    url: 'https://huggingface.co/collections/allenai/molmoact-689697591a3936fba38174d7'
+  - label: Datasets
+    kind: dataset
+    url: 'https://huggingface.co/collections/allenai/molmoact-data-mixture-6897e583e13b6c2cf3ea2b80'
+  - label: Post
+    kind: post
+    url: 'https://x.com/hq_fang/status/1955296974128718176'
+  - label: State of AI Report
+    kind: report
+    url: 'https://docs.google.com/presentation/d/1xiLl0VdrlNMAei8pmaX4ojIOfej6lhvZbOIK7Z6C-Go/edit?slide=id.g379a362bd85_0_90#slide=id.g379a362bd85_0_90/'
+  - label: VentureBeat
+    kind: report
+    url: 'https://venturebeat.com/ai/ai2s-molmoact-model-thinks-in-3d-to-challenge-nvidia-and-google-in-robotics-ai'
+  - label: GeekWire
+    kind: report
+    url: 'https://www.geekwire.com/2025/ai2-unveils-molmoact-an-open-source-robotics-system-that-reasons-in-3D-and-adjusts-on-the-fly/'
+  - label: Business Wire
+    kind: report
+    url: 'https://www.businesswire.com/news/home/20250812422452/en/Ai2-Unveils-MolmoAct-a-New-Class-of-AI-Model-That-Reasons-in-3D-Space'
+  - label: The Robot Report
+    kind: report
+    url: 'https://www.therobotreport.com/ai2-says-new-molmoact-7b-model-brings-ai-into-the-physical-world/'
+  - label: SiliconANGLE
+    kind: report
+    url: 'https://siliconangle.com/2025/08/12/ai2-releases-open-ai-model-allows-robots-plan-movements-3d-space/'
+metrics:
+  citation_count: 95
+  github_stars: 317
+citation:
+  provider: semanticscholar
+  id: 'arXiv:2508.07917'
+github_repo: allenai/molmoact

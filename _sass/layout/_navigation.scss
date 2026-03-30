@@ -175,7 +175,7 @@
 .greedy-nav {
   position: relative;
   min-width: 250px;
-  background: var(--global-bg-color);
+  background: transparent;
 
   a {
     display: block;
@@ -196,10 +196,15 @@
     padding: 0 0.5rem;
     border: 0;
     outline: none;
-    background-color: var(--global-base-color);
-    color: #fff;
+    background-color: transparent;
+    color: var(--global-masthead-link-color);
     cursor: pointer;
     z-index: 100;
+
+    &:hover {
+      background-color: transparent;
+      color: var(--global-masthead-link-color-hover);
+    }
   }
 
   .visible-links {
@@ -243,15 +248,19 @@
         left: 0;
         bottom: 0;
         height: 4px;
-        background: var(--global-border-color);
+        background: var(--global-accent-color-soft);
         width: 100%;
-        -webkit-transition: $global-transition;
-        transition: $global-transition;
+        -webkit-transition: transform 0.22s ease, background-color 0.22s ease;
+        transition: transform 0.22s ease, background-color 0.22s ease;
+        -webkit-transform-origin: center center;
+            -ms-transform-origin: center center;
+                transform-origin: center center;
         -webkit-transform: scaleX(0);
             -ms-transform: scaleX(0);
                 transform: scaleX(0); /* hide*/
       }
 
+      &.is-current-section:before,
       &:hover:before {
         -webkit-transform: scaleX(1);
             -ms-transform: scaleX(1);
@@ -266,10 +275,16 @@
     right: 0;
     margin-top: 15px;
     padding: 5px;
-    border: 1px solid var(--global-border-color);
+    border: 1px solid var(--global-glass-border-color);
     border-radius: $border-radius;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(#000, 0.25);
+    background: var(--global-glass-bg-color-strong);
+    -webkit-backdrop-filter: blur(18px) saturate(165%);
+            backdrop-filter: blur(18px) saturate(165%);
+    box-shadow: 0 16px 32px rgba(46, 42, 59, 0.12);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0s;
 
     a {
       margin: 0;
@@ -278,7 +293,11 @@
 
       &:hover {
         color: var(--global-masthead-link-color-hover);
-        background: var(--global-border-color);
+        background: var(--global-section-tint-color);
+      }
+
+      &.is-current-section {
+        color: var(--global-accent-color);
       }
     }
 
@@ -290,7 +309,7 @@
       width: 0;
       border-style: solid;
       border-width: 0 10px 10px;
-      border-color: var(--global-border-color) transparent;
+      border-color: var(--global-glass-border-color) transparent;
       display: block;
       z-index: 0;
     }
@@ -303,7 +322,7 @@
       width: 0;
       border-style: solid;
       border-width: 0 10px 10px;
-      border-color: #fff transparent;
+      border-color: var(--global-glass-bg-color-strong) transparent;
       display: block;
       z-index: 1;
     }
@@ -316,6 +335,30 @@
         border-bottom: none;
       }
     }
+  }
+
+  .hidden-links.hidden {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-0.3rem);
+    transition: opacity 0.16s ease, transform 0.16s ease, visibility 0s linear 0.16s;
+  }
+}
+
+.greedy-nav .visible-links a.is-current-section {
+  color: var(--global-accent-color);
+}
+
+html[data-theme="dark"] {
+  .greedy-nav .visible-links a.is-current-section {
+    color: var(--global-accent-color);
+  }
+
+  .greedy-nav .hidden-links a.is-current-section {
+    background: rgba(143, 122, 229, 0.12);
+    border-radius: $border-radius;
   }
 }
 
@@ -361,6 +404,11 @@
 /* 3) Nudge the hamburger left so it sits just before the toggle */
 .greedy-nav button{
   right: calc(var(--theme-toggle-w) + var(--gap));
+}
+
+.greedy-nav button .navicon{
+  transform: scale(0.72);
+  transform-origin: center;
 }
 
 /* move the little arrow so it sits under the hamburger (to the left of the gear) */

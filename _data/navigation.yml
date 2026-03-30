@@ -14,11 +14,11 @@ main:
   - title: "Research"
     url: /#research
 
-  - title: "Services"
-    url: /#services
-
   - title: "Talks"
     url: /#talks
+
+  - title: "Services"
+    url: /#services
 
   - title: "Education"
     url: /#education

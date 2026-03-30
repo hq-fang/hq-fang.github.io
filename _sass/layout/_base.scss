@@ -16,7 +16,8 @@ body {
   padding: $masthead-height 0 0;
   padding-bottom: 1em; /* make bottom white space smaller */
   font-family: $global-font-family;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  line-height: 1.6;
 
   &.overflow--hidden {
     /* when primary navigation is visible, the content in the background won't scroll */
@@ -28,7 +29,8 @@ h1, h2, h3, h4, h5, h6 {
   margin: 2em 0 0.5em;
   line-height: 1.2;
   font-family: $header-font-family;
-  font-weight: bold;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 h1 {
@@ -182,6 +184,48 @@ ol li {
 li ul,
 li ol {
   margin-top: 0.5em;
+}
+
+.page__content ul:not(.home-news__list):not(.home-news__list--extra) {
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.page__content ul:not(.home-news__list):not(.home-news__list--extra) > li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.page__content ul:not(.home-news__list):not(.home-news__list--extra) > li::before {
+  content: "\2022";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--global-accent-color-soft);
+}
+
+.page__content ul:not(.home-news__list):not(.home-news__list--extra) ul {
+  margin-top: 0.45rem;
+}
+
+.page__content ul:not(.home-news__list):not(.home-news__list--extra) ul > li {
+  padding-left: 1rem;
+}
+
+.page__content ul:not(.home-news__list):not(.home-news__list--extra) ul > li::before {
+  content: "\25E6";
+  top: 0.1em;
+  color: rgba(110, 89, 207, 0.82);
+}
+
+.page__content ol {
+  padding-left: 1.35rem;
+}
+
+.page__content ol > li::marker {
+  color: var(--global-accent-color-soft);
+  font-weight: 600;
 }
 
 /*

@@ -33,12 +33,12 @@
     margin-right: auto;
     margin-top: 1em;
     max-width: 100%;
-    padding: 0 1em 1em;
+    padding: 0 clamp(1em, 4vw, 2.75em) 1em;
 
     @include breakpoint($x-large) {
       max-width: $x-large;
-      padding-left: 4em;
-      padding-right: 4em;
+      padding-left: 6em;
+      padding-right: 6em;
     }
   }
 
@@ -62,6 +62,10 @@
 .page__footer-copyright {
   font-family: $global-font-family;
   font-size: $type-size-7;
+}
+
+.page__footer-sitemap {
+  display: inline-block;
 }
 
 .page__footer-follow {
@@ -104,4 +108,59 @@
 /* right aligned the footer visitor map */
 .page__footer-map {
   float: right;
+  width: 420px;
+  height: 100px;
+  min-height: 100px;
+  max-width: 420px;
+
+  visitor-count {
+    display: block;
+    width: 420px;
+    height: 100px;
+    min-height: 100px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .page__footer {
+    footer {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+    }
+  }
+
+  .page__footer-sitemap {
+    order: 1;
+  }
+
+  .page__footer-follow {
+    order: 2;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .page__footer-copyright {
+    order: 3;
+    margin-top: 0;
+  }
+
+  .page__footer-map {
+    order: 4;
+    float: none;
+    clear: both;
+    width: min(100%, 420px);
+    max-width: 100%;
+    margin-top: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    align-self: flex-start;
+
+    visitor-count {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
 }

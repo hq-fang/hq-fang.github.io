@@ -1,6 +1,6 @@
 <!-- start custom footer snippets -->
 
-<a href="/sitemap/">Sitemap</a>
+<a class="page__footer-sitemap" href="/sitemap/">Sitemap</a>
 
 <!-- Support for MatJax -->
 <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -16,7 +16,18 @@
     await mermaid.run({querySelector:'code.language-mermaid'});
 </script>
 
+<script defer src="{{ base_path }}/assets/vendor/visitor-count/widget.js?token=v1.eyJzaXRlSWQiOiJocS1mYW5nIiwiaG9zdCI6ImhxLWZhbmcuZ2l0aHViLmlvIn0.Y2wW_WzkQovnbVT3DK6kEjSJTlwJvlb7OVCFMXfSrFU&v=20260322a"></script>
+
 <div class="page__footer-map">
-    <a href='https://clustrmaps.com/site/1c36x'  title='visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=ffffff&w=150&t=m&d=jLmpEU5-nxSc6JcelFxoYjzlF4JeTbh8cMa8dSmNslg&co=2d78ad&ct=ffffff'/></a>
+    <visitor-count
+      api="https://visitor-count.xsling.workers.dev/"
+      site-id="hq-fang"
+      widget="horizontal"
+      metric="count"
+      range="all"
+      label="Visitors"
+      demo
+      data-visitor-count-widget
+    ></visitor-count>
 </div>
 <!-- end custom footer snippets -->

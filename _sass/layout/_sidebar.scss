@@ -80,6 +80,14 @@
    Author profile and links
    ========================================================================== */
 
+.author-profile {
+  display: block;
+}
+
+.author__details {
+  display: contents;
+}
+
 .author__avatar {
   display: table-cell;
   vertical-align: top;
@@ -91,6 +99,7 @@
     display: block;
     width: auto;
     height: auto;
+    margin-bottom: 0.8rem;
   }
 
   img {
@@ -123,17 +132,18 @@
   margin: 0;
 
   @include breakpoint($large) {
-    margin-top: 10px;
+    margin-top: 0;
     margin-bottom: 10px;
   }
 }
 .sidebar .author__name {
   font-family: $sans-serif;
-  font-size: $type-size-5;
+  font-size: $type-size-4;
 }
 
 .sidebar .author__desktop {
   display: none;
+
   @media screen and (min-width: 1024px) {
     display: block;
   }
@@ -150,10 +160,14 @@
 
 .author__bio {
   margin: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
 
-  @include breakpoint($large) {
+  @media screen and (min-width: $sidebar-screen-min-width) {
     margin-top: 10px;
     margin-bottom: 20px;
+    white-space: nowrap;
+    overflow-wrap: normal;
   }
 }
 
@@ -166,22 +180,12 @@
   position: relative;
   cursor: pointer;
 
-  li:last-child {
-    a {
-      margin-bottom: 0;
-    }
-  }
-
   @include breakpoint($large) {
     display: block;
   }
 
   button {
-    margin-bottom: 0;
-
-    @include breakpoint($large) {
-      display: none;
-    }
+    display: none;
   }
 }
 
@@ -190,6 +194,7 @@
   position: absolute;
   right: 0;
   margin-top: 15px;
+  margin-bottom: 0;
   padding: 10px;
   list-style-type: none;
   border: 1px solid var(--global-border-color);
@@ -256,28 +261,205 @@
     color: inherit;
     font-size: $type-size-5;
     text-decoration: none;
+    transition: none;
 
     &:hover {
       text-decoration: underline;
     }
   }
-}
 
-
-/*
-   Follow Button
-   ========================================================================== */
-
-/* align the arrow for FOLLOW button */
-@media (max-width: 64em) {            /* same breakpoint where the arrow is shown */
-  .author__urls:before,
-  .author__urls:after{
-    left: auto;                       /* stop centering */
-    right: 20px;                      /* arrow sits near the top-right; tweak 10–16px */
+  .icon-pad-right {
+    padding-right: 0.5em;
+    margin-right: 0.5em;
   }
 
-  /* (optional) make the inner arrow use the card bg var instead of hard #fff */
-  .author__urls:after{
-    border-color: var(--global-bg-color) transparent;
+  .fa,
+  .fab,
+  .fas,
+  .ai {
+    color: var(--global-text-color);
+    opacity: 0.78;
+    transition: color 0.16s ease, opacity 0.16s ease;
+  }
+
+  a:hover {
+    .fa,
+    .fab,
+    .fas,
+    .ai {
+      color: var(--global-text-color);
+      opacity: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .sidebar.sticky {
+    position: static;
+    top: auto;
+    z-index: auto;
+    padding-top: 0 !important;
+    background: transparent;
+  }
+}
+
+@media screen and (max-width: #{$sidebar-screen-min-width - 1px}) {
+  .sidebar {
+    float: none;
+    width: 100%;
+    max-width: none;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (min-width: $sidebar-screen-min-width) {
+  .sidebar {
+    width: $sidebar-link-max-width;
+    max-width: $sidebar-link-max-width;
+    margin-right: 0.5rem;
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: #{$sidebar-screen-min-width - 1px}) {
+  .author-profile {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+  }
+
+  .author__details {
+    display: flex;
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .author__avatar {
+    display: block;
+    flex: 0 0 min(150px, 35.3vw);
+    width: min(150px, 35.3vw);
+    min-width: min(150px, 35.3vw);
+  }
+
+  .author__avatar img {
+    padding: 0;
+    border: 0;
+  }
+
+  .author__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .author__name,
+  .author__pronouns {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .author__bio {
+    max-width: 100%;
+  }
+
+  .author__urls-wrapper {
+    display: block;
+    cursor: default;
+  }
+
+  .author__urls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem;
+    position: static;
+    right: auto;
+    margin-top: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    z-index: auto;
+    box-shadow: none;
+  }
+
+  .author__urls:before,
+  .author__urls:after {
+    display: none;
+  }
+
+  .author__urls li {
+    display: block;
+    margin-bottom: 0;
+    white-space: normal;
+  }
+
+  .author__urls a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    margin-bottom: 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 1;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .author__urls .icon-pad-right {
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .author__urls .fa,
+  .author__urls .fab,
+  .author__urls .fas,
+  .author__urls .ai {
+    font-size: 1rem;
+  }
+}
+
+html[data-theme="dark"] {
+  .author__urls .fa,
+  .author__urls .fab,
+  .author__urls .fas,
+  .author__urls .ai {
+    color: var(--global-text-color-light);
+    opacity: 0.88;
+  }
+
+  .author__urls a:hover {
+    .fa,
+    .fab,
+    .fas,
+    .ai {
+      color: var(--global-text-color);
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: #{$sidebar-screen-min-width - 1px}) {
+    .author__urls a {
+      background: transparent;
+      border-color: transparent;
+    }
+
+    .author__urls a:hover {
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+    }
   }
 }

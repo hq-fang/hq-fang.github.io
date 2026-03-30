@@ -1,0 +1,56 @@
+title: 'PointArena: Probing Multimodal Grounding Through Language-Guided Pointing'
+date: 2025-05-15
+selected: false
+selected_order: -1
+authors:
+  - name: Long Cheng
+    marks: '*'
+  - name: Jiafei Duan
+    marks: '*'
+  - name: Yi Ru Wang
+    marks: '†'
+  - name: Haoquan Fang
+    marks: '†'
+    highlight: true
+  - name: Boyang Li
+    marks: '†'
+  - name: Yushan Huang
+  - name: Elvis Wang
+  - name: Ainaz Eftekhar
+  - name: Jason Lee
+  - name: Wentao Yuan
+  - name: Rose Hendrix
+  - name: Noah A. Smith
+  - name: Fei Xia
+  - name: Dieter Fox
+  - name: Ranjay Krishna
+venue:
+  - text: 'arXiv 2025'
+media:
+  type: video
+  src: /images/publications/20250515_pointarena.mp4
+  alt: PointArena teaser video
+  playback_rate: 3
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://arxiv.org/abs/2505.09990'
+  - label: Code
+    kind: code
+    url: 'https://github.com/pointarena/pointarena'
+  - label: Website
+    kind: website
+    url: 'https://pointarena.github.io'
+  - label: Dataset
+    kind: dataset
+    url: 'https://huggingface.co/datasets/PointArena/pointarena-data'
+  - label: Post
+    kind: post
+    url: 'https://x.com/hq_fang/status/1924516643369107958'
+metrics:
+  citation_count: 10
+  github_stars: 34
+citation:
+  provider: semanticscholar
+  id: 'arXiv:2505.09990'
+github_repo: pointarena/pointarena

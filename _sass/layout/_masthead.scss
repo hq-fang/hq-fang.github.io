@@ -4,10 +4,13 @@
 
 .masthead {
   position: fixed;
-  background: var(--global-bg-color);
+  background: var(--global-glass-bg-color);
   height: fit-content;
   top: 0;
   width: 100%;
+  -webkit-backdrop-filter: blur(18px) saturate(165%);
+          backdrop-filter: blur(18px) saturate(165%);
+  box-shadow: 0 6px 18px rgba(46, 42, 59, 0.04);
 
   -webkit-animation: intro 0.3s both;
           animation: intro 0.3s both;
@@ -16,24 +19,19 @@
   z-index: 20;
 
   &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 1px;
-    background: var(--global-border-color);
-    width: 100%;
+    display: none;
   }
 
   &__inner-wrap {
     @include container;
     @include clearfix;
-    padding: 0.5em 1em;
+    padding: 0.5em clamp(1em, 4vw, 2.75em);
     font-family: $sans-serif-narrow;
 
     @include breakpoint($x-large) {
       max-width: $x-large;
-      padding-left: 4em;
-      padding-right: 4em;
+      padding-left: 6em;
+      padding-right: 6em;
     }
 
     nav {
@@ -57,13 +55,13 @@
 }
 
 .masthead__menu-item {
-  background-color: var(--global-bg-color);
+  background-color: transparent;
   display: block;
   list-style-type: none;
   white-space: nowrap;
 
   &--lg {
-    padding-right: 2em;
+    padding-right: 0;
     font-weight: 700;
   }
 }

@@ -22,25 +22,34 @@ When you are initially working on your website, it is very useful to be able to 
 1. Clone the repository and made updates as detailed above.
 
 ### Using a different IDE
-1. Make sure you have ruby-dev, bundler, and nodejs installed
-    
-    On most Linux distribution and [Windows Subsystem Linux](https://learn.microsoft.com/en-us/windows/wsl/about) the command is:
-    ```bash
-    sudo apt install ruby-dev ruby-bundler nodejs
-    ```
-    If you see error `Unable to locate package ruby-bundler`, `Unable to locate package nodejs `, run the following:
-    ```bash
-    sudo apt update && sudo apt upgrade -y
-    ```
-    then try run `sudo apt install ruby-dev ruby-bundler nodejs` again.
+1. Install Node.js and a Ruby 3.2.x toolchain. This repository currently expects Bundler `2.6.8` and does not run correctly with macOS's system Ruby (`/usr/bin/ruby`, 2.6). Ruby 4.0 can also trigger dependency resolution issues with the `github-pages` gem.
 
-    On MacOS the commands are:
+    On macOS (Apple Silicon), install Homebrew Ruby 3.2 and put it first on your `PATH`:
     ```bash
-    brew install ruby
-    brew install node
-    gem install bundler
+    /opt/homebrew/bin/brew install ruby@3.2 node
+    echo 'export PATH="/opt/homebrew/opt/ruby@3.2/bin:$PATH"' >> ~/.zshrc
     ```
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
+
+    On macOS (Intel), use:
+    ```bash
+    /usr/local/bin/brew install ruby@3.2 node
+    echo 'export PATH="/usr/local/opt/ruby@3.2/bin:$PATH"' >> ~/.zshrc
+    ```
+
+    On Linux distributions and [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/about), install Ruby 3.2.x plus `nodejs` using your preferred package manager or a version manager such as `rbenv`, `asdf`, or `mise`.
+
+    After restarting your shell, confirm that the correct toolchain is active:
+    ```bash
+    ruby -v
+    bundle -v
+    ```
+    `ruby -v` should report Ruby 3.2.x and `bundle -v` should report Bundler 2.6.8.
+
+1. Run `bundle install` to install Ruby dependencies:
+    ```bash
+    bundle config set --local path 'vendor/bundle'
+    bundle install
+    ```
 
     If you see file permission error like `Fetching bundler-2.6.3.gem ERROR:  While executing gem (Gem::FilePermissionError) You don't have write permissions for the /var/lib/gems/3.2.0 directory.` or `Bundler::PermissionError: There was an error while trying to write to /usr/local/bin.`
     Install Gems Locally (Recommended):
@@ -49,8 +58,9 @@ When you are initially working on your website, it is very useful to be able to 
     ```
     then try run `bundle install` again. If succeeded, you should see a folder called `vendor` and `.bundle`.
 
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
-    You may also try `bundle exec jekyll serve -l -H localhost` to ensure jekyll to use specific dependencies on your own local machine.
+1. Run `bundle exec jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000`. The local server will automatically rebuild and refresh the pages on change.
+
+    If `bundle exec jekyll serve -l -H localhost` reports missing gems, the dependencies have not been installed in the active Ruby environment yet. Re-check `ruby -v`, `bundle -v`, and then run `bundle install` again.
 
 If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
 

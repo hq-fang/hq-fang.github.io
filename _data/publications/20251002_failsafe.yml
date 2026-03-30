@@ -1,0 +1,43 @@
+title: 'FailSafe: Reasoning and Recovery from Failures in Vision-Language-Action Models'
+date: 2025-10-02
+selected: false
+selected_order: -1
+authors:
+  - name: Zijun Lin
+  - name: Jiafei Duan
+  - name: Haoquan Fang
+    highlight: true
+  - name: Dieter Fox
+  - name: Ranjay Krishna
+  - name: Cheston Tan
+  - name: Bihan Wen
+venue:
+  - text: 'arXiv 2025'
+media:
+  type: video
+  src: /images/publications/20251002_failsafe.mp4
+  alt: FailSafe teaser video
+  playback_rate: 3
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://arxiv.org/abs/2510.01642'
+  - label: Code
+    kind: code
+    url: 'https://github.com/Jimntu/FailSafe_code'
+  - label: Website
+    kind: website
+    url: 'https://jimntu.github.io/FailSafe/'
+  - label: Dataset
+    kind: dataset
+    url: 'https://huggingface.co/datasets/onepiece1999/failsafe_data'
+  - label: Post
+    kind: post
+    url: 'https://x.com/DJiafei/status/1986136467002040625'
+metrics:
+  citation_count: 7
+  github_stars: 16
+citation:
+  provider: semanticscholar
+  id: 'arXiv:2510.01642'
+github_repo: Jimntu/FailSafe_code

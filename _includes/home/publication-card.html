@@ -1,0 +1,153 @@
+{% assign publication = include.publication %}
+{% assign citation_count = publication.metrics.citation_count | default: 0 | plus: 0 %}
+{% assign github_stars = publication.metrics.github_stars | default: 0 | plus: 0 %}
+{% if publication.media and publication.media.src %}
+  {% if publication.media.src contains "://" %}
+    {% assign media_src = publication.media.src %}
+  {% else %}
+    {% assign media_src = publication.media.src | relative_url %}
+  {% endif %}
+{% endif %}
+
+<article class="publication-card">
+  {% if publication.media %}
+    <div class="publication-card__media">
+      <div class="publication-card__media-frame{% if publication.media.fit == 'contain' %} is-contain{% endif %}">
+        {% if publication.media.type == "video" %}
+          <video
+            class="publication-card__video"
+            src="{{ media_src }}"
+            autoplay
+            muted
+            loop
+            playsinline
+            webkit-playsinline
+            disablepictureinpicture
+            preload="metadata"
+            data-playback-rate="{{ publication.media.playback_rate | default: 1 }}"
+            aria-label="{{ publication.media.alt }}">
+          </video>
+        {% else %}
+          <img
+            class="publication-card__image"
+            src="{{ media_src }}"
+            alt="{{ publication.media.alt }}">
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="publication-card__body">
+    <h3 class="publication-card__title">{{ publication.title }}</h3>
+
+    <p class="publication-card__authors">
+      {%- for author in publication.authors -%}
+        {%- assign inline_marks = "" -%}
+        {%- assign superscript_marks = author.marks -%}
+        {%- if author.marks contains "*" -%}
+          {%- assign inline_marks = "*" -%}
+          {%- assign superscript_marks = author.marks | remove: "*" -%}
+        {%- endif -%}
+        <span class="publication-card__author{% if author.highlight %} publication-card__author--self{% endif %}">{{- author.name -}}{{- inline_marks -}}{% if superscript_marks != blank %}<sup>{{ superscript_marks }}</sup>{% endif %}</span>{% unless forloop.last %}, {% endunless %}
+      {%- endfor -%}
+    </p>
+
+    <div class="publication-card__venues">
+      {% for venue_line in publication.venue %}
+        <p class="publication-card__venue-line{% if forloop.first %} publication-card__venue-line--primary{% endif %}">
+          {{ venue_line.text }}
+          {% if venue_line.note %}
+            <span class="publication-card__venue-note{% if venue_line.note_variant %} publication-card__venue-note--{{ venue_line.note_variant }}{% endif %}">{{ venue_line.note }}</span>
+          {% endif %}
+        </p>
+      {% endfor %}
+    </div>
+
+    {% if publication.links %}
+      <div class="publication-card__links">
+        {% assign prioritized_link_kinds = "paper,code,website" | split: "," %}
+        {% for prioritized_kind in prioritized_link_kinds %}
+          {% for link in publication.links %}
+            {% if link.kind == prioritized_kind %}
+              {% if link.url contains "://" %}
+                {% assign link_href = link.url %}
+              {% else %}
+                {% assign link_href = link.url | relative_url %}
+              {% endif %}
+              <a class="publication-chip" href="{{ link_href }}" target="_blank" rel="noopener noreferrer">
+                {% case link.kind %}
+                  {% when "paper" %}
+                    <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+                  {% when "website" %}
+                    <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                  {% when "code" %}
+                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                  {% when "dataset" %}
+                    <i class="fa-solid fa-database" aria-hidden="true"></i>
+                  {% when "models" %}
+                    <i class="fa-solid fa-cubes-stacked" aria-hidden="true"></i>
+                  {% when "post" %}
+                    <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+                  {% when "blog" %}
+                    <i class="fa-solid fa-blog" aria-hidden="true"></i>
+                  {% when "report" %}
+                    <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
+                  {% else %}
+                    <i class="fa-solid fa-link" aria-hidden="true"></i>
+                {% endcase %}
+                <span>{{ link.label }}</span>
+                {% if link.kind == "paper" and citation_count > 0 %}
+                  <span class="publication-chip__metric publication-chip__metric--citations" aria-label="{{ citation_count }} citations">
+                    <span>{{ citation_count }}</span>
+                    <i class="fa-solid fa-quote-right publication-chip__metric-icon publication-chip__metric-icon--citations" aria-hidden="true"></i>
+                  </span>
+                {% elsif link.kind == "code" and github_stars > 0 %}
+                  <span class="publication-chip__metric publication-chip__metric--stars" aria-label="{{ github_stars }} GitHub stars">
+                    <span>{{ github_stars }}</span>
+                    <i class="fa-solid fa-star publication-chip__metric-icon publication-chip__metric-icon--stars" aria-hidden="true"></i>
+                  </span>
+                {% endif %}
+              </a>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        {% for link in publication.links %}
+          {% unless prioritized_link_kinds contains link.kind %}
+            {% if link.url contains "://" %}
+              {% assign link_href = link.url %}
+            {% else %}
+              {% assign link_href = link.url | relative_url %}
+            {% endif %}
+            <a class="publication-chip" href="{{ link_href }}" target="_blank" rel="noopener noreferrer">
+              {% case link.kind %}
+                {% when "paper" %}
+                  <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+                {% when "website" %}
+                  <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                {% when "code" %}
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
+                {% when "dataset" %}
+                  <i class="fa-solid fa-database" aria-hidden="true"></i>
+                {% when "models" %}
+                  <i class="fa-solid fa-cubes-stacked" aria-hidden="true"></i>
+                {% when "post" %}
+                  <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+                {% when "blog" %}
+                  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+                {% when "report" %}
+                  <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
+                {% else %}
+                  <i class="fa-solid fa-link" aria-hidden="true"></i>
+              {% endcase %}
+              <span>{{ link.label }}</span>
+            </a>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if publication.highlight %}
+      <div class="publication-card__highlight">{{ publication.highlight }}</div>
+    {% endif %}
+  </div>
+</article>

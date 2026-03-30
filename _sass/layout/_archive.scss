@@ -27,6 +27,28 @@
   }
 }
 
+@media screen and (min-width: $sidebar-screen-min-width) {
+  .archive {
+    float: none;
+    width: auto;
+    margin-left: calc(#{$sidebar-link-max-width} + 0.5rem);
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: #{$sidebar-screen-min-width - 1px}) {
+  .archive {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 .archive__subtitle {
   margin: 1.414em 0 0;
   padding-bottom: 0.5em;

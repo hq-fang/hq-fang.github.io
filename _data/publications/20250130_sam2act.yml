@@ -1,0 +1,58 @@
+title: 'SAM2Act: Integrating Visual Foundation Model with A Memory Architecture for Robotic Manipulation'
+date: 2025-01-30
+selected: true
+selected_order: 2
+authors:
+  - name: Haoquan Fang
+    highlight: true
+  - name: Markus Grotz
+  - name: Wilbert Pumacay
+  - name: Yi Ru Wang
+  - name: Dieter Fox
+    marks: '‡'
+  - name: Ranjay Krishna
+    marks: '‡'
+  - name: Jiafei Duan
+    marks: '‡'
+venue:
+  - text: 'International Conference on Machine Learning (ICML) 2025'
+  - text: 'WRL @ ICLR 2025'
+    note: 'Oral Presentation'
+    note_variant: spotlight
+  - text: 'FMEA @ CVPR 2025'
+    note: 'Oral Presentation'
+    note_variant: spotlight
+  - text: 'RemembeRL @ CoRL 2025'
+    note: 'Best Paper Award'
+    note_variant: award
+media:
+  type: video
+  src: /images/publications/20250130_sam2act.mp4
+  alt: SAM2Act teaser video
+  playback_rate: 3
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://arxiv.org/abs/2501.18564'
+  - label: Code
+    kind: code
+    url: 'https://github.com/sam2act/sam2act'
+  - label: Website
+    kind: website
+    url: 'https://sam2act.github.io'
+  - label: MemoryBench
+    kind: dataset
+    url: 'https://huggingface.co/datasets/hqfang/memorymench'
+  - label: Post
+    kind: post
+    url: 'https://x.com/hq_fang/status/1885105252971798682'
+  - label: AI Index Report
+    kind: report
+    url: 'https://hai-production.s3.amazonaws.com/files/hai_ai_index_report_2025.pdf#page=151'
+metrics:
+  citation_count: 47
+  github_stars: 229
+citation:
+  provider: semanticscholar
+  id: 'arXiv:2501.18564'
+github_repo: sam2act/sam2act
