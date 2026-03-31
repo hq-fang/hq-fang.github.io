@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const siteNav = document.getElementById("site-nav");
   const masthead = document.querySelector(".masthead");
   const root = document.documentElement;
+  const clustrMapsRenderTimers = new WeakMap();
 
   const initializeVisitorCountWidgets = () => {
     const visitorWidgets = Array.from(document.querySelectorAll("[data-visitor-count-widget]"));
@@ -25,6 +26,189 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const observer = new MutationObserver(syncVisitorWidgetTheme);
     observer.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+  };
+
+  const initializeClustrMapsWidgets = () => {
+    const clustrMapsWidgets = Array.from(document.querySelectorAll("[data-clustrmaps-widget]"));
+
+    if (clustrMapsWidgets.length === 0) {
+      return;
+    }
+
+    const clampChannel = (value) => Math.max(0, Math.min(255, Math.round(value)));
+
+    const normalizeHexColor = (value) => {
+      if (typeof value !== "string") {
+        return null;
+      }
+
+      const trimmed = value.trim();
+
+      if (/^#?[0-9a-f]{3}$/i.test(trimmed)) {
+        const source = trimmed.replace("#", "");
+        return `#${source
+          .split("")
+          .map((char) => `${char}${char}`)
+          .join("")
+          .toLowerCase()}`;
+      }
+
+      if (/^#?[0-9a-f]{6}$/i.test(trimmed)) {
+        return `#${trimmed.replace("#", "").toLowerCase()}`;
+      }
+
+      return null;
+    };
+
+    const rgbColorToHex = (value) => {
+      if (typeof value !== "string") {
+        return null;
+      }
+
+      const match = value
+        .trim()
+        .match(/^rgba?\(\s*([0-9.]+)\s*,\s*([0-9.]+)\s*,\s*([0-9.]+)(?:\s*,\s*[0-9.]+\s*)?\)$/i);
+
+      if (!match) {
+        return null;
+      }
+
+      const [, red, green, blue] = match;
+      return `#${[red, green, blue]
+        .map((channel) => clampChannel(Number.parseFloat(channel)).toString(16).padStart(2, "0"))
+        .join("")}`;
+    };
+
+    const readCssHexColor = (styles, propertyName, fallback) =>
+      normalizeHexColor(styles.getPropertyValue(propertyName)) ||
+      rgbColorToHex(styles.getPropertyValue(propertyName)) ||
+      fallback;
+
+    const mixHexColors = (first, second, ratio) => {
+      const from = normalizeHexColor(first);
+      const to = normalizeHexColor(second);
+
+      if (!from || !to) {
+        return from || to || "#ffffff";
+      }
+
+      const weight = Math.max(0, Math.min(1, ratio));
+      const firstChannels = [1, 3, 5].map((offset) => Number.parseInt(from.slice(offset, offset + 2), 16));
+      const secondChannels = [1, 3, 5].map((offset) => Number.parseInt(to.slice(offset, offset + 2), 16));
+
+      return `#${firstChannels
+        .map((channel, index) =>
+          clampChannel(channel + (secondChannels[index] - channel) * weight)
+            .toString(16)
+            .padStart(2, "0"),
+        )
+        .join("")}`;
+    };
+
+    const buildClustrMapsConfig = () => {
+      const styles = window.getComputedStyle(root);
+      const mode = root.dataset.theme === "dark" ? "dark" : "light";
+      const footerBackground = readCssHexColor(
+        styles,
+        "--global-footer-bg-color",
+        mode === "dark" ? "#1f2937" : "#2d78ad",
+      );
+      const footerText = readCssHexColor(styles, "--global-text-color-light", "#ffffff");
+      const accent = readCssHexColor(styles, "--global-accent-color", "#2d78ad");
+      const accentStrong = readCssHexColor(styles, "--global-accent-color-strong", accent);
+
+      return {
+        cl: footerText,
+        co: mixHexColors(footerBackground, accent, mode === "dark" ? 0.3 : 0.18),
+        ct: footerText,
+        cmo: mixHexColors(accentStrong, "#3acc3a", mode === "dark" ? 0.28 : 0.38),
+        cmn: mixHexColors(accent, "#ff5353", mode === "dark" ? 0.48 : 0.62),
+      };
+    };
+
+    const renderClustrMapsWidget = (host) => {
+      const tokenValue = host.dataset ? host.dataset.clustrmapsToken : "";
+      const token = typeof tokenValue === "string" ? tokenValue.trim() : "";
+      const image = host.querySelector("[data-clustrmaps-image]");
+
+      if (!token || !(image instanceof HTMLImageElement)) {
+        return;
+      }
+
+      const palette = buildClustrMapsConfig();
+      const clustrMapsType = "m";
+      const signature = [
+        palette.cl,
+        palette.co,
+        palette.ct,
+        palette.cmo,
+        palette.cmn,
+        clustrMapsType,
+      ].join("|");
+
+      if (image.dataset.clustrmapsSignature === signature) {
+        return;
+      }
+
+      const params = new URLSearchParams({
+        cl: palette.cl.slice(1),
+        w: "150",
+        t: clustrMapsType,
+        d: token,
+        co: palette.co.slice(1),
+        ct: palette.ct.slice(1),
+        cmo: palette.cmo.slice(1),
+        cmn: palette.cmn.slice(1),
+      });
+
+      image.dataset.clustrmapsSignature = signature;
+      image.src = `https://clustrmaps.com/map_v2.png?${params.toString()}`;
+    };
+
+    const cancelScheduledClustrMapsRender = (host) => {
+      const previousTimer = clustrMapsRenderTimers.get(host);
+
+      if (previousTimer) {
+        window.clearTimeout(previousTimer);
+        clustrMapsRenderTimers.delete(host);
+      }
+    };
+
+    const scheduleClustrMapsRender = (host) => {
+      cancelScheduledClustrMapsRender(host);
+
+      const timer = window.setTimeout(() => {
+        clustrMapsRenderTimers.delete(host);
+        renderClustrMapsWidget(host);
+      }, 180);
+
+      clustrMapsRenderTimers.set(host, timer);
+    };
+
+    clustrMapsWidgets.forEach((host) => {
+      renderClustrMapsWidget(host);
+
+      if ("ResizeObserver" in window) {
+        const resizeObserver = new ResizeObserver(() => {
+          scheduleClustrMapsRender(host);
+        });
+
+        resizeObserver.observe(host);
+      } else {
+        window.addEventListener("resize", () => {
+          scheduleClustrMapsRender(host);
+        });
+      }
+    });
+
+    const themeObserver = new MutationObserver(() => {
+      clustrMapsWidgets.forEach((host) => {
+        cancelScheduledClustrMapsRender(host);
+        renderClustrMapsWidget(host);
+      });
+    });
+
+    themeObserver.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
   };
 
   const initializeSectionNavigation = () => {
@@ -134,6 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   initializeVisitorCountWidgets();
+  initializeClustrMapsWidgets();
   initializeSectionNavigation();
 
   const publicationButtons = Array.from(document.querySelectorAll("[data-publication-switch]"));
