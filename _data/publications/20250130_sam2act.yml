@@ -51,7 +51,7 @@ links:
     url: 'https://hai-production.s3.amazonaws.com/files/hai_ai_index_report_2025.pdf#page=151'
 metrics:
   citation_count: 47
-  github_stars: 229
+  github_stars: 230
 citation:
   provider: semanticscholar
   id: 'arXiv:2501.18564'

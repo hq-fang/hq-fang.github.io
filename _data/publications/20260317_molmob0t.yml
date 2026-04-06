@@ -58,6 +58,9 @@ links:
   - label: Blog
     kind: blog
     url: 'https://allenai.org/blog/molmobot-robot-manipulation'
+  - label: Website
+    kind: website
+    url: 'https://allenai.github.io/MolmoBot/'
   - label: Post
     kind: post
     url: 'https://x.com/allen_ai/status/2031752021355667830'
