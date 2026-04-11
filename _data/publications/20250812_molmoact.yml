@@ -86,8 +86,8 @@ links:
     kind: report
     url: 'https://siliconangle.com/2025/08/12/ai2-releases-open-ai-model-allows-robots-plan-movements-3d-space/'
 metrics:
-  citation_count: 100
-  github_stars: 319
+  citation_count: 101
+  github_stars: 320
 citation:
   provider: semanticscholar
   id: 'arXiv:2508.07917'
