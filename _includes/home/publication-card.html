@@ -1,6 +1,4 @@
 {% assign publication = include.publication %}
-{% assign citation_count = publication.metrics.citation_count | default: 0 | plus: 0 %}
-{% assign github_stars = publication.metrics.github_stars | default: 0 | plus: 0 %}
 {% if publication.media and publication.media.src %}
   {% if publication.media.src contains "://" %}
     {% assign media_src = publication.media.src %}
@@ -69,6 +67,8 @@
         {% for prioritized_kind in prioritized_link_kinds %}
           {% for link in publication.links %}
             {% if link.kind == prioritized_kind %}
+              {% assign link_citations = link.citations | default: 0 | plus: 0 %}
+              {% assign link_stars = link.stars | default: 0 | plus: 0 %}
               {% if link.url contains "://" %}
                 {% assign link_href = link.url %}
               {% else %}
@@ -96,14 +96,14 @@
                     <i class="fa-solid fa-link" aria-hidden="true"></i>
                 {% endcase %}
                 <span>{{ link.label }}</span>
-                {% if link.kind == "paper" and citation_count > 0 %}
-                  <span class="publication-chip__metric publication-chip__metric--citations" aria-label="{{ citation_count }} citations">
-                    <span>{{ citation_count }}</span>
+                {% if link.kind == "paper" and link_citations > 0 %}
+                  <span class="publication-chip__metric publication-chip__metric--citations" aria-label="{{ link_citations }} citations">
+                    <span>{{ link_citations }}</span>
                     <i class="fa-solid fa-quote-right publication-chip__metric-icon publication-chip__metric-icon--citations" aria-hidden="true"></i>
                   </span>
-                {% elsif link.kind == "code" and github_stars > 0 %}
-                  <span class="publication-chip__metric publication-chip__metric--stars" aria-label="{{ github_stars }} GitHub stars">
-                    <span>{{ github_stars }}</span>
+                {% elsif link.kind == "code" and link_stars > 0 %}
+                  <span class="publication-chip__metric publication-chip__metric--stars" aria-label="{{ link_stars }} GitHub stars">
+                    <span>{{ link_stars }}</span>
                     <i class="fa-solid fa-star publication-chip__metric-icon publication-chip__metric-icon--stars" aria-hidden="true"></i>
                   </span>
                 {% endif %}
@@ -113,6 +113,8 @@
         {% endfor %}
         {% for link in publication.links %}
           {% unless prioritized_link_kinds contains link.kind %}
+            {% assign link_citations = link.citations | default: 0 | plus: 0 %}
+            {% assign link_stars = link.stars | default: 0 | plus: 0 %}
             {% if link.url contains "://" %}
               {% assign link_href = link.url %}
             {% else %}
@@ -140,6 +142,17 @@
                   <i class="fa-solid fa-link" aria-hidden="true"></i>
               {% endcase %}
               <span>{{ link.label }}</span>
+              {% if link.kind == "paper" and link_citations > 0 %}
+                <span class="publication-chip__metric publication-chip__metric--citations" aria-label="{{ link_citations }} citations">
+                  <span>{{ link_citations }}</span>
+                  <i class="fa-solid fa-quote-right publication-chip__metric-icon publication-chip__metric-icon--citations" aria-hidden="true"></i>
+                </span>
+              {% elsif link.kind == "code" and link_stars > 0 %}
+                <span class="publication-chip__metric publication-chip__metric--stars" aria-label="{{ link_stars }} GitHub stars">
+                  <span>{{ link_stars }}</span>
+                  <i class="fa-solid fa-star publication-chip__metric-icon publication-chip__metric-icon--stars" aria-hidden="true"></i>
+                </span>
+              {% endif %}
             </a>
           {% endunless %}
         {% endfor %}

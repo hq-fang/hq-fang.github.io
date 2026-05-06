@@ -1,4 +1,4 @@
-{% assign selected_publication_ids = site.data.publication_order.selected_by_preference %}
+{% assign selected_publication_ids = site.data.publication_order.selected | default: site.data.publication_order.selected_by_preference %}
 {% assign all_publication_ids = site.data.publication_order.by_date_asc | reverse %}
 
 <div class="home-section__toolbar home-section__toolbar--publications">
