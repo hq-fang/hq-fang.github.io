@@ -27,6 +27,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
         run: ruby scripts/update_publication_metrics.rb
 
       - name: commit updated metrics
