@@ -9,15 +9,16 @@ redirect_from:
 
 <div id="about" aria-hidden="true"></div>
 
-<span id="handwave">👋🏻</span> Hi! I'm an undergraduate student and researcher at the [University of Washington (UW)](https://washington.edu/). I double major in computer science (with honors) and statistics, with a minor in mathematics. I am also a student researcher working with the [Perceptual Reasoning and Interaction Research (PRIOR)](https://prior.allenai.org/) team at the [Allen Institute for AI (Ai2)](https://allenai.org/).
+<span id="handwave">👋🏻</span> Hi! I'm an incoming CS PhD student at [Stanford University](https://www.stanford.edu/), advised by Prof [Fei-Fei Li](https://profiles.stanford.edu/fei-fei-li) as part of the [Stanford Vision and Learning Lab](https://svl.stanford.edu/). Currently, I am also a student researcher working with the [PRIOR](https://prior.allenai.org/) team and the [Robotics](https://allenai.org/embodied-ai/) team at the [Allen Institute for AI](https://allenai.org/).
 
-At UW, I am fortunate to be advised by Prof [Ranjay Krishna](https://www.ranjaykrishna.com/) at the [Reasoning, AI, and VisioN (RAIVN) Lab](https://raivn.cs.washington.edu/) in UW [CSE](https://cs.washington.edu/). Before that, I was privileged to be advised by Prof [Jenq-Neng Hwang](https://people.ece.uw.edu/hwang/) at the [Information Processing Lab (IPL)](https://ipl-uw.github.io/) in UW [ECE](https://www.ece.uw.edu/). At Ai2 PRIOR, I am fortunate to be co-advised by Prof [Ranjay Krishna](https://www.ranjaykrishna.com/) and Prof [Ali Farhadi](https://homes.cs.washington.edu/~ali/). I am also pleased to be mentored by and collaborate with Prof [Dieter Fox](https://homes.cs.washington.edu/~fox/), Dr [Jiafei Duan](https://duanjiafei.com/), and Dr [Ying Jin](https://scholar.google.com/citations?user=MNrLDhwAAAAJ&hl=en/).
+Previously, I obtained my BS degree from the [University of Washington](https://washington.edu/), where I double majored in computer science (with honors) and statistics, and minored in mathematics. I was privileged to be advised by Prof [Ranjay Krishna](https://www.ranjaykrishna.com/), Prof [Ali Farhadi](https://www.cs.washington.edu/people/faculty/ali-farhadi/), and Prof [Jenq-Neng Hwang](https://people.ece.uw.edu/hwang/). I was also grateful to be mentored by and collaborate with Prof [Dieter Fox](https://homes.cs.washington.edu/~fox/), Dr [Jiafei Duan](https://duanjiafei.com/), and Dr [Ying Jin](https://scholar.google.com/citations?user=MNrLDhwAAAAJ&hl=en/).
 
 My research interests lie broadly in robot learning. In particular, I focus on developing generalist robotic manipulation policies that leverage strong priors, by optimizing both the data curation and model architectures.
 
 
 ## 🔥 News {#news}
 <ul class="home-news__list" id="news-list" data-collapsible-list data-initial-limit="5" data-expand-label="Expand news" data-collapse-label="Collapse news">
+  <li><strong>[2026/05]</strong> We are launching <em><a href="https://allenai.org/blog/molmoact2">MolmoAct2: Action Reasoning Models for Real-World Deployment</a></em>.</li>
   <li><strong>[2026/03]</strong> We are launching <em><a href="https://allenai.org/blog/molmobot-robot-manipulation">MolmoB0T: Large-Scale Simulation Enables Zero-Shot Manipulation</a></em>.</li>
   <li><strong>[2026/02]</strong> Our paper <em>Recurrent-Depth VLA: Implicit Test-Time Compute Scaling of Vision-Language-Action Models via Latent Iterative Reasoning</em> has been preprinted to arXiv.</li>
   <li><strong>[2026/01]</strong> Our paper <em>MolmoAct: Action Reasoning Models that can Reason in Space</em> has been accepted to <a href="https://2026.ieee-icra.org/">ICRA 2026</a>.</li>
@@ -47,7 +48,7 @@ My research interests lie broadly in robot learning. In particular, I focus on d
 ## 💬 Invited Talks {#talks}
 <ul class="home-news__list home-talks__list" id="talks-list">
   <li><strong>[2025/08]</strong> In-person talk at <a href="https://genesis-ai.company/">Genesis AI</a> on <a href="https://allenai.org/blog/molmoact/">MolmoAct</a> hosted by Dr <a href="https://zswang666.github.io/">Johnson Wang</a>.</li>
-  <li><strong>[2025/08]</strong> In-person talk at <a href="https://deepmind.google/models/gemini-robotics/">Google DeepMind Gemini Robotics Team</a> on <a href="https://allenai.org/blog/molmoact/">MolmoAct</a> hosted by <a href="https://tedxiao.me/">Ted Xiao</a>.</li>
+  <li><strong>[2025/08]</strong> In-person talk at <a href="https://deepmind.google/models/gemini-robotics/">Google DeepMind Gemini Robotics</a> on <a href="https://allenai.org/blog/molmoact/">MolmoAct</a> hosted by <a href="https://tedxiao.me/">Ted Xiao</a>.</li>
   <li><strong>[2025/08]</strong> Remote talk at <a href="https://www.youtube.com/@RoboPapers">RoboPaper Podcast</a> on <a href="https://allenai.org/blog/molmoact/">MolmoAct</a> hosted by Dr <a href="https://cpaxton.github.io/">Chris Paxton</a>.</li>
   <li><strong>[2025/08]</strong> Remote talk at <a href="https://syfi.cs.washington.edu/">UW SyFI Lab</a> on <a href="https://allenai.org/blog/molmoact/">MolmoAct</a> hosted by Prof <a href="https://homes.cs.washington.edu/~baris/">Baris Kasikci</a>.</li>
   <li><strong>[2025/08]</strong> Remote talk at <a href="https://www.realsenseai.com/">Intel RealSense</a> on <a href="https://allenai.org/blog/molmoact/">MolmoAct</a> hosted by VP <a href="https://chrismatthieu.com/">Chris Matthieu</a>.</li>
@@ -59,33 +60,65 @@ My research interests lie broadly in robot learning. In particular, I focus on d
 </ul>
 
 ## 📖 Academic Services {#services}
-- **Conference Reviewer**
-  - International Conference on Learning Representations (ICLR) 2025 Workshops
-  - Conference on Computer Vision and Pattern Recognition (CVPR) 2025 Workshops
-  - International Conference on Robotics and Automation (ICRA) 2026
-- **Workshop Organizer**
-  - Workshop on 3D Vision Language Models for Robotic Manipulation ([Robo-3DVLM](https://robo-3dvlms.github.io/)) at CVPR 2025
-  - Workshop on Embodied Reasoning in Action ([ERA](https://embodied-reasoning.github.io/)) at CVPR 2026
-- **Teaching Assistant & Grader**
-  - UW CSE 493G1/599G1: Deep Learning (Undergrad/Grad, [Spring 2025](https://courses.cs.washington.edu/courses/cse493g1/25sp/), [Winter 2026](https://courses.cs.washington.edu/courses/cse493g1/26wi/))
-  - UW STAT 311: Elements of Statistical Methods (Undergrad, Autumn 2025, Winter 2026)
+<ul class="resume-section">
+  <li class="resume-entry">
+    <p class="resume-entry__heading"><strong>Conference Reviewer</strong></p>
+    <ul class="resume-entry__details">
+      <li>International Conference on Learning Representations (ICLR) 2025 Workshops</li>
+      <li>Conference on Computer Vision and Pattern Recognition (CVPR) 2025 Workshops</li>
+      <li>International Conference on Robotics and Automation (ICRA) 2026</li>
+      <li>International Conference on Intelligent Robots and Systems (IROS) 2026</li>
+    </ul>
+  </li>
+
+  <li class="resume-entry">
+    <p class="resume-entry__heading"><strong>Workshop Organizer</strong></p>
+    <ul class="resume-entry__details">
+      <li>Workshop on 3D Vision Language Models for Robotic Manipulation (<a href="https://robo-3dvlms.github.io/">Robo-3DVLM</a>) at CVPR 2025</li>
+      <li>Workshop on Embodied Reasoning in Action (<a href="https://embodied-reasoning.github.io/">ERA</a>) at CVPR 2026</li>
+    </ul>
+  </li>
+
+  <li class="resume-entry">
+    <p class="resume-entry__heading"><strong>Teaching Assistant &amp; Grader</strong></p>
+    <ul class="resume-entry__details">
+      <li>UW CSE 493G1/599G1: Deep Learning (Undergrad/Grad, <a href="https://courses.cs.washington.edu/courses/cse493g1/25sp/">Spring 2025</a>, <a href="https://courses.cs.washington.edu/courses/cse493g1/26wi/">Winter 2026</a>)</li>
+      <li>UW STAT 311: Elements of Statistical Methods (Undergrad, Autumn 2025, Winter 2026)</li>
+    </ul>
+  </li>
+</ul>
 
 ## 🎓 Education {#education}
-- **University of Washington**, *Sep 2022 - Mar 2026*
-<br>*Bachelor of Science in Computer Science with Honors*
-<br>*Bachelor of Science in Statistics*
-<br>*Minor in Mathematics*
-  - GPA: 3.98/4.00, Dean’s Lists, Best Senior Thesis Award Honorable Mention, CSE Award for Excellence Scholarship, CRA Outstanding Undergraduate Researcher Award Awardee
+<ul class="resume-section">
+  <li class="resume-entry">
+    <p class="resume-entry__heading"><strong>Stanford University</strong>, <em>Sep 2026 - Jun 2031 (expected)</em></p>
+    <p class="resume-entry__line"><em>Doctor of Philosophy in Computer Science</em></p>
+    <p class="resume-entry__line"><em>Advised by Prof <a href="https://profiles.stanford.edu/fei-fei-li">Fei-Fei Li</a></em></p>
+  </li>
+
+  <li class="resume-entry">
+    <p class="resume-entry__heading"><strong>University of Washington</strong>, <em>Sep 2022 - Mar 2026</em></p>
+    <p class="resume-entry__line"><em>Bachelor of Science in Computer Science with Honors</em></p>
+    <p class="resume-entry__line"><em>Bachelor of Science in Statistics</em></p>
+    <p class="resume-entry__line"><em>Minor in Mathematics</em></p>
+    <ul class="resume-entry__details">
+      <li>GPA: 3.98/4.00, Dean’s Lists, Magna Cum Laude, Best Senior Thesis Award Honorable Mention, CSE Award for Excellence Scholarship, CRA Outstanding Undergraduate Researcher Award Awardee</li>
+    </ul>
+  </li>
+</ul>
 
 ## 💼 Industrial Experiences {#work}
-- **Allen Institute for AI**
-<br>*Student Researcher, Nov 2025 - Present*
-<br>*Student Collaborator, Apr 2025 - Oct 2025*
-  - Worked with the [Perceptual Reasoning and Interaction Research (PRIOR)](https://prior.allenai.org/) Team
-  - Mentored by Prof Ranjay Krishna, Prof Ali Farhadi, and Dr Jiafei Duan
-- **Nokia Shanghai Bell**
-<br>*Research Engineer Intern, Jul 2023 - Aug 2023*
-  - Mentored by Dr Quan Wang, Explored on [COSMIC](https://cosmic-sizing.org/) Report Generation
+<ul class="resume-section">
+  <li class="resume-entry">
+    <p class="resume-entry__heading"><strong>Allen Institute for AI</strong></p>
+    <p class="resume-entry__line"><em>Student Researcher, Nov 2025 - Present</em></p>
+    <p class="resume-entry__line"><em>Student Collaborator, Apr 2025 - Oct 2025</em></p>
+    <ul class="resume-entry__details">
+      <li>Worked with the <a href="https://prior.allenai.org/">PRIOR</a> team and the <a href="https://allenai.org/embodied-ai/">Robotics</a> team</li>
+      <li>Mentored by Prof <a href="https://ranjaykrishna.com/">Ranjay Krishna</a>, Prof <a href="https://www.cs.washington.edu/people/faculty/ali-farhadi/">Ali Farhadi</a>, Prof <a href="https://homes.cs.washington.edu/~fox/">Dieter Fox</a>, and Dr <a href="https://duanjiafei.com/">Jiafei Duan</a></li>
+    </ul>
+  </li>
+</ul>
 
 ## 🏅 Awards {#awards}
 - [CRA Outstanding Undergraduate Researcher Award](https://cra.org/crn/2026/01/2025-26-cra-outstanding-undergraduate-researcher-award-recipients-announced/) Awardee 2026 (8 Awardees in North America)

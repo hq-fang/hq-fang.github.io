@@ -26,20 +26,20 @@ author:
   avatar           : "bio-photo-real.jpg"
   name             : "Haoquan Fang"
   pronouns         : # example: "she/her"  
-  bio              : "Undergrad @ UW CSE & Stat</br>Student Researcher @ Ai2 PRIOR"
+  bio              : "Incoming CS PhD @ Stanford</br>Student Researcher @ Ai2"
   location         : 
   employer         : 
   uri              : # URL
-  email            : "hqfang [at] cs [dot] washington [dot] edu" 
+  email            : "hqfang [at] stanford.edu" 
 
   # Academic websites
   academia         : # URL
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=O-D4QqsAAAAJ&hl=en/"
+  googlescholar    : "https://scholar.google.com/citations?user=AZP7Hd8AAAAJ&hl=en/"
   inspire-hep      : # URL
   impactstory      : # URL
   orcid            : # URL
-  semantic         : "https://www.semanticscholar.org/author/Haoquan-Fang/2343790187/"
+  semantic         : # URL
   pubmed           : # URL
   researchgate     : # URL
   scopus           : # URL
@@ -49,7 +49,7 @@ author:
   codepen          : # Username
   dribbble         : # Username
   github           : "hq-fang"
-  huggingface      : "hqfang"
+  huggingface      : # Username
   kaggle           : # Username
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
