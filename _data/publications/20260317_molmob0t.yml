@@ -1,7 +1,7 @@
 title: 'MolmoB0T: Large-Scale Simulation Enables Zero-Shot Manipulation'
 date: 2026-03-17
 selected: false
-selected_order: -1
+selected_order: none
 authors:
   - name: Abhay Deshpande
     marks: '*§'
@@ -55,16 +55,31 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/pdf/2603.16861'
+    citations: 0
+  - label: Code (Data)
+    kind: code
+    url: 'https://github.com/allenai/molmospaces'
+    stars: 309
+  - label: Code (Models)
+    kind: code
+    url: 'https://github.com/allenai/MolmoBot'
+    stars: 68
   - label: Blog
     kind: blog
     url: 'https://allenai.org/blog/molmobot-robot-manipulation'
+  - label: Website
+    kind: website
+    url: 'https://allenai.github.io/MolmoBot/'
+  - label: Models
+    kind: models
+    url: 'https://huggingface.co/collections/allenai/molmobot-models'
+  - label: Datasets
+    kind: dataset
+    url: 'https://huggingface.co/datasets/allenai/MolmoBot-Data'
   - label: Post
     kind: post
     url: 'https://x.com/allen_ai/status/2031752021355667830'
-metrics:
-  citation_count: 0
-  github_stars: 
 citation:
-  provider: semanticscholar
+  provider: googlescholar
+  google_scholar_id: 'O-D4QqsAAAAJ:dhFuZR0502QC'
   id: 'arXiv:2603.16861'
-github_repo: 

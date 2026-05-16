@@ -1,7 +1,7 @@
 title: 'PointArena: Probing Multimodal Grounding Through Language-Guided Pointing'
 date: 2025-05-15
 selected: false
-selected_order: -1
+selected_order: none
 authors:
   - name: Long Cheng
     marks: '*'
@@ -35,9 +35,11 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/abs/2505.09990'
+    citations: 11
   - label: Code
     kind: code
     url: 'https://github.com/pointarena/pointarena'
+    stars: 36
   - label: Website
     kind: website
     url: 'https://pointarena.github.io'
@@ -47,10 +49,7 @@ links:
   - label: Post
     kind: post
     url: 'https://x.com/hq_fang/status/1924516643369107958'
-metrics:
-  citation_count: 10
-  github_stars: 34
 citation:
-  provider: semanticscholar
+  provider: googlescholar
+  google_scholar_id: 'O-D4QqsAAAAJ:5nxA0vEk-isC'
   id: 'arXiv:2505.09990'
-github_repo: pointarena/pointarena

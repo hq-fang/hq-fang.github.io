@@ -1,0 +1,99 @@
+title: 'MolmoAct2: Action Reasoning Models for Real-World Deployment'
+date: 2026-05-05
+selected: true
+selected_order: none
+authors:
+  - name: Haoquan Fang
+    marks: '*§'
+    highlight: true
+  - name: Jiafei Duan
+    marks: '*§'
+  - name: Donovan Clay
+    marks: '§'
+  - name: Sam Wang
+    marks: '§'
+  - name: Shuo Liu
+    marks: '§'
+  - name: Weikai Huang
+    marks: '§'
+  - name: Xiang Fan
+    marks: '§'
+  - name: Wei-Chuan Tsai
+    marks: '§'
+  - name: Shirui Chen
+    marks: '§'
+  - name: Yi Ru Wang
+    marks: '§'
+  - name: Shanli Xing
+    marks: '§'
+  - name: Jaemin Cho
+  - name: Jae Sung Park
+  - name: Ainaz Eftekhar
+  - name: Peter Sushko
+  - name: Karen Farley
+  - name: Angad Wadhwa
+  - name: Cole Harrison
+  - name: Winson Han
+  - name: Ying-Chun Lee
+  - name: Eli VanderBilt
+  - name: Rose Hendrix
+  - name: Suveen Ellawela
+  - name: Lucas Ngoo
+  - name: Joyce Chai
+  - name: Zhongzheng Ren
+    marks: '§'
+  - name: Ali Farhadi
+    marks: '§'
+  - name: Dieter Fox
+    marks: '§'
+  - name: Ranjay Krishna
+    marks: '§'
+venue:
+  - text: 'arXiv 2026'
+media:
+  type: video
+  src: /images/publications/20260505_molmoact2.mp4
+  alt: MolmoAct2 teaser video
+  playback_rate: 3
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://arxiv.org/abs/2605.02881'
+    citations: 0
+  - label: Code
+    kind: code
+    url: 'https://github.com/allenai/molmoact2'
+    stars: 123
+  - label: Blog
+    kind: blog
+    url: 'https://allenai.org/blog/molmoact2'
+  - label: Base Models
+    kind: models
+    url: 'https://huggingface.co/collections/allenai/molmoact2-models'
+  - label: Finetuned Models
+    kind: models
+    url: 'https://huggingface.co/collections/allenai/molmoact2-finetuned-models'
+  - label: MolmoAct2-Bimanual YAM Dataset
+    kind: dataset
+    url: 'https://huggingface.co/collections/allenai/molmoact2-bimanualyam-dataset'
+  - label: Robotics Datasets
+    kind: dataset
+    url: 'https://huggingface.co/collections/allenai/molmoact2-datasets'
+  - label: ER Datasets
+    kind: dataset
+    url: 'https://huggingface.co/collections/allenai/molmo2-er-datasets'
+  - label: Post
+    kind: post
+    url: 'https://x.com/hq_fang/status/2051728136828772833'
+  - label: SiliconANGLE
+    kind: report
+    url: 'https://siliconangle.com/2026/05/05/ai2-releases-molmoact-2-enhancing-robot-intelligence-real-world'
+  - label: The AI Economy
+    kind: report
+    url: 'https://theaieconomy.substack.com/p/molmoact-2-leaves-the-lab'
+  - label: AI Insider
+    kind: report
+    url: 'https://theaiinsider.tech/2026/05/06/ai2-releases-molmoact-2-open-source-foundation-model-for-robots/'
+citation:
+  provider: semanticscholar
+  id: 'arXiv:2605.02881'

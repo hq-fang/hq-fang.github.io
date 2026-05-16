@@ -1,7 +1,7 @@
 title: 'SAM2Act: Integrating Visual Foundation Model with A Memory Architecture for Robotic Manipulation'
 date: 2025-01-30
 selected: true
-selected_order: 2
+selected_order: none
 authors:
   - name: Haoquan Fang
     highlight: true
@@ -34,9 +34,11 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/abs/2501.18564'
+    citations: 58
   - label: Code
     kind: code
     url: 'https://github.com/sam2act/sam2act'
+    stars: 236
   - label: Website
     kind: website
     url: 'https://sam2act.github.io'
@@ -49,10 +51,7 @@ links:
   - label: AI Index Report
     kind: report
     url: 'https://hai-production.s3.amazonaws.com/files/hai_ai_index_report_2025.pdf#page=151'
-metrics:
-  citation_count: 47
-  github_stars: 229
 citation:
-  provider: semanticscholar
+  provider: googlescholar
+  google_scholar_id: 'O-D4QqsAAAAJ:aqlVkmm33-oC'
   id: 'arXiv:2501.18564'
-github_repo: sam2act/sam2act
