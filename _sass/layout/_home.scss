@@ -229,15 +229,15 @@
 .publication-card {
   display: grid;
   grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
-  gap: 1.45rem;
+  gap: 23px;
   align-items: start;
   margin: 0;
-  padding: 1.2rem 0 1.35rem;
+  padding: 19px 0 22px;
   border-bottom: 1px solid var(--global-border-color);
 }
 
 .publication-card:first-child {
-  padding-top: 0.35rem;
+  padding-top: 6px;
 }
 
 .publication-card:last-child {
@@ -280,7 +280,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 9px;
   text-align: left;
 }
 
@@ -293,7 +293,7 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 22px;
 }
 
 .publication-card__venues {
@@ -306,15 +306,15 @@
 .publication-card__venue-line {
   margin: 0;
   font-size: 0.9rem;
-  line-height: 1.65;
+  line-height: 24px;
 }
 
 .publication-card__venue-line {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  column-gap: 0.45rem;
-  row-gap: 0.18rem;
+  column-gap: 7px;
+  row-gap: 3px;
 }
 
 .publication-card__authors {
@@ -341,7 +341,7 @@
   display: inline-flex;
   align-items: center;
   margin-left: 0;
-  padding: 0.14rem 0.5rem;
+  padding: 2px 8px;
   border: 1px solid transparent;
   border-radius: 999px;
   border-color: rgba(154, 140, 255, 0.18);
@@ -349,7 +349,7 @@
   color: var(--global-accent-color);
   font-size: 0.74rem;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 14px;
 }
 
 .publication-card__venue-note--award,
@@ -363,25 +363,47 @@
 .publication-card__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: 0.15rem;
+  gap: 7px;
+  margin-top: 2px;
 }
 
 .publication-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.28rem;
-  padding: 0.14rem 0.5rem;
+  gap: 5px;
+  height: 23px;
+  padding: 0 8px;
   border: 1px solid rgba(110, 89, 207, 0.16);
   border-radius: 999px;
   background: rgba(220, 235, 255, 0.62);
   color: var(--global-text-color);
-  font-size: 0.74rem;
+  font-size: 13px;
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 1;
   text-decoration: none !important;
   box-shadow: none;
   transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+}
+
+.publication-chip > span:not(.publication-chip__metric) {
+  line-height: 1;
+}
+
+.publication-chip i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  transform: translateY(var(--publication-chip-icon-offset-y, 0));
+}
+
+.publication-chip i::before {
+  display: block;
+  line-height: 1;
+  transform: translateY(var(--publication-chip-icon-glyph-offset-y, 0));
 }
 
 .publication-chip:hover {
@@ -396,14 +418,28 @@
 .publication-chip__metric {
   display: inline-flex;
   align-items: center;
-  gap: 0.24rem;
+  gap: 4px;
   color: var(--global-accent-color);
   font-weight: 400;
+  line-height: 1;
   white-space: nowrap;
 }
 
-.publication-chip__metric-icon {
+.publication-chip__metric > span {
   line-height: 1;
+}
+
+.publication-chip .publication-chip__metric-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 13px;
+  width: 13px;
+  height: 13px;
+  min-width: 13px;
+  min-height: 13px;
+  line-height: 1;
+  --publication-chip-icon-glyph-offset-y: 0.04em;
 }
 
 .publication-chip__metric-icon--citations {
@@ -411,9 +447,10 @@
   font-size: 0.82em;
 }
 
-.publication-chip__metric-icon--stars {
+.publication-chip .publication-chip__metric-icon--stars {
   color: var(--global-accent-color);
   font-size: 0.78em;
+  --publication-chip-icon-glyph-offset-y: -0.02em;
 }
 
 .publication-card__highlight {
