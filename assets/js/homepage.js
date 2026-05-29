@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const siteNav = document.getElementById("site-nav");
   const masthead = document.querySelector(".masthead");
   const root = document.documentElement;
-  const clustrMapsRenderTimers = new WeakMap();
+  const mapMyVisitorsRenderTimers = new WeakMap();
 
   const initializeVisitorCountWidgets = () => {
     const visitorWidgets = Array.from(document.querySelectorAll("[data-visitor-count-widget]"));
@@ -28,10 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
   };
 
-  const initializeClustrMapsWidgets = () => {
-    const clustrMapsWidgets = Array.from(document.querySelectorAll("[data-clustrmaps-widget]"));
+  const initializeMapMyVisitorsWidgets = () => {
+    const mapMyVisitorsWidgets = Array.from(document.querySelectorAll("[data-mapmyvisitors-widget]"));
 
-    if (clustrMapsWidgets.length === 0) {
+    if (mapMyVisitorsWidgets.length === 0) {
       return;
     }
 
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .join("")}`;
     };
 
-    const buildClustrMapsConfig = () => {
+    const buildMapMyVisitorsConfig = () => {
       const styles = window.getComputedStyle(root);
       const mode = root.dataset.theme === "dark" ? "dark" : "light";
       const footerBackground = readCssHexColor(
@@ -126,34 +126,34 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     };
 
-    const renderClustrMapsWidget = (host) => {
-      const tokenValue = host.dataset ? host.dataset.clustrmapsToken : "";
+    const renderMapMyVisitorsWidget = (host) => {
+      const tokenValue = host.getAttribute("data-mapmyvisitors-token") || "";
       const token = typeof tokenValue === "string" ? tokenValue.trim() : "";
-      const image = host.querySelector("[data-clustrmaps-image]");
+      const image = host.querySelector("[data-mapmyvisitors-image]");
 
       if (!token || !(image instanceof HTMLImageElement)) {
         return;
       }
 
-      const palette = buildClustrMapsConfig();
-      const clustrMapsType = "m";
+      const palette = buildMapMyVisitorsConfig();
+      const mapMyVisitorsType = "m";
       const signature = [
         palette.cl,
         palette.co,
         palette.ct,
         palette.cmo,
         palette.cmn,
-        clustrMapsType,
+        mapMyVisitorsType,
       ].join("|");
 
-      if (image.dataset.clustrmapsSignature === signature) {
+      if (image.dataset.mapmyvisitorsSignature === signature) {
         return;
       }
 
       const params = new URLSearchParams({
         cl: palette.cl.slice(1),
         w: "150",
-        t: clustrMapsType,
+        t: mapMyVisitorsType,
         d: token,
         co: palette.co.slice(1),
         ct: palette.ct.slice(1),
@@ -161,50 +161,50 @@ document.addEventListener("DOMContentLoaded", () => {
         cmn: palette.cmn.slice(1),
       });
 
-      image.dataset.clustrmapsSignature = signature;
-      image.src = `https://clustrmaps.com/map_v2.png?${params.toString()}`;
+      image.dataset.mapmyvisitorsSignature = signature;
+      image.src = `https://mapmyvisitors.com/map.png?${params.toString()}`;
     };
 
-    const cancelScheduledClustrMapsRender = (host) => {
-      const previousTimer = clustrMapsRenderTimers.get(host);
+    const cancelScheduledMapMyVisitorsRender = (host) => {
+      const previousTimer = mapMyVisitorsRenderTimers.get(host);
 
       if (previousTimer) {
         window.clearTimeout(previousTimer);
-        clustrMapsRenderTimers.delete(host);
+        mapMyVisitorsRenderTimers.delete(host);
       }
     };
 
-    const scheduleClustrMapsRender = (host) => {
-      cancelScheduledClustrMapsRender(host);
+    const scheduleMapMyVisitorsRender = (host) => {
+      cancelScheduledMapMyVisitorsRender(host);
 
       const timer = window.setTimeout(() => {
-        clustrMapsRenderTimers.delete(host);
-        renderClustrMapsWidget(host);
+        mapMyVisitorsRenderTimers.delete(host);
+        renderMapMyVisitorsWidget(host);
       }, 180);
 
-      clustrMapsRenderTimers.set(host, timer);
+      mapMyVisitorsRenderTimers.set(host, timer);
     };
 
-    clustrMapsWidgets.forEach((host) => {
-      renderClustrMapsWidget(host);
+    mapMyVisitorsWidgets.forEach((host) => {
+      renderMapMyVisitorsWidget(host);
 
       if ("ResizeObserver" in window) {
         const resizeObserver = new ResizeObserver(() => {
-          scheduleClustrMapsRender(host);
+          scheduleMapMyVisitorsRender(host);
         });
 
         resizeObserver.observe(host);
       } else {
         window.addEventListener("resize", () => {
-          scheduleClustrMapsRender(host);
+          scheduleMapMyVisitorsRender(host);
         });
       }
     });
 
     const themeObserver = new MutationObserver(() => {
-      clustrMapsWidgets.forEach((host) => {
-        cancelScheduledClustrMapsRender(host);
-        renderClustrMapsWidget(host);
+      mapMyVisitorsWidgets.forEach((host) => {
+        cancelScheduledMapMyVisitorsRender(host);
+        renderMapMyVisitorsWidget(host);
       });
     });
 
@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   initializeVisitorCountWidgets();
-  initializeClustrMapsWidgets();
+  initializeMapMyVisitorsWidgets();
   initializeSectionNavigation();
 
   const publicationButtons = Array.from(document.querySelectorAll("[data-publication-switch]"));
