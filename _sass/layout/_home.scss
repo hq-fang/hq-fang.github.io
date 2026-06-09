@@ -120,6 +120,123 @@
   margin: 0.35rem 0 0;
 }
 
+.education-list,
+.industry-list {
+  margin: 0;
+}
+
+.education-entry,
+.industry-entry {
+  display: grid;
+  grid-template-columns: minmax(118px, 160px) minmax(0, 1fr);
+  gap: 23px;
+  align-items: center;
+  margin: 0;
+  padding: 19px 0 22px;
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+.education-entry:first-child,
+.industry-entry:first-child {
+  padding-top: 6px;
+}
+
+.education-entry:last-child,
+.industry-entry:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.education-entry__media,
+.industry-entry__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.education-entry__media-frame,
+.industry-entry__media-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 136px;
+  max-width: 100%;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.industry-entry__media-frame {
+  width: 160px;
+  aspect-ratio: 1.4 / 1;
+}
+
+.education-entry__logo,
+.industry-entry__logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.industry-entry__logo--nvidia {
+  transform: scale(1.2);
+}
+
+.education-entry__body,
+.industry-entry__body {
+  min-width: 0;
+  text-align: left;
+}
+
+.page__content .education-entry__title,
+.page__content .education-entry__date,
+.page__content .education-entry__line,
+.page__content .industry-entry__title,
+.page__content .industry-entry__line {
+  margin: 0;
+  text-align: left;
+}
+
+.education-entry__title,
+.industry-entry__title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.education-entry__date,
+.industry-entry__date {
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+  line-height: 24px;
+}
+
+.education-entry__line {
+  font-size: 0.9rem;
+  line-height: 24px;
+}
+
+.industry-entry__line {
+  font-size: 0.9rem;
+  line-height: 24px;
+}
+
+.education-entry__line + .education-entry__line,
+.industry-entry__line + .industry-entry__line {
+  margin-top: 0;
+}
+
+.page__content .education-entry__details,
+.page__content .industry-entry__details {
+  margin: 0.35rem 0 0;
+}
+
 .home-news__list {
   position: relative;
   margin: 0;
@@ -513,6 +630,38 @@ html[data-theme="dark"] {
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.36);
   }
 
+  .education-entry,
+  .industry-entry {
+    border-bottom-color: rgba(42, 49, 64, 0.96);
+  }
+
+  .education-entry__media-frame,
+  .industry-entry__media-frame {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .education-entry__logo {
+    filter: brightness(1.08) contrast(1.08) saturate(1.05);
+  }
+
+  .education-entry__logo--uw {
+    filter: brightness(1.28) contrast(1.08) saturate(1.08);
+  }
+
+  .industry-entry__logo {
+    filter: brightness(1.08) contrast(1.08) saturate(1.05);
+  }
+
+  .industry-entry__logo--nvidia {
+    filter: invert(1) hue-rotate(180deg) brightness(1.14) contrast(1.08) saturate(1.25);
+  }
+
+  .education-entry__date,
+  .industry-entry__date {
+    color: var(--global-text-color-light);
+  }
+
   .publication-card__authors {
     color: var(--global-text-color-light);
   }
@@ -565,7 +714,19 @@ html[data-theme="dark"] {
     gap: 1rem;
   }
 
+  .education-entry,
+  .industry-entry {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
   .publication-card__media {
+    max-width: 100%;
+  }
+
+  .education-entry__media,
+  .industry-entry__media {
     max-width: 100%;
   }
 }
