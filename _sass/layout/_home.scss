@@ -345,7 +345,7 @@
 
 .publication-card {
   display: grid;
-  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr);
   gap: 23px;
   align-items: start;
   margin: 0;
@@ -452,6 +452,13 @@
 .publication-card__venue-line--primary {
   font-weight: 600;
   color: var(--global-text-color);
+}
+
+@media screen and (min-width: $medium-wide) and (max-width: #{$sidebar-screen-min-width - 1px}) {
+  .publication-card__venue-line--primary {
+    font-size: 0.86rem;
+    white-space: nowrap;
+  }
 }
 
 .publication-card__venue-note {
