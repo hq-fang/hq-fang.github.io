@@ -1,7 +1,7 @@
 title: 'FailSafe: Reasoning and Recovery from Failures in Vision-Language-Action Models'
 date: 2025-10-02
 selected: false
-selected_order: -1
+selected_order: none
 authors:
   - name: Zijun Lin
   - name: Jiafei Duan
@@ -12,7 +12,7 @@ authors:
   - name: Cheston Tan
   - name: Bihan Wen
 venue:
-  - text: 'arXiv 2025'
+  - text: 'International Conference on Intelligent Robots and Systems (IROS) 2026'
 media:
   type: video
   src: /images/publications/20251002_failsafe.mp4
@@ -22,9 +22,11 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/abs/2510.01642'
+    citations: 19
   - label: Code
     kind: code
     url: 'https://github.com/Jimntu/FailSafe_code'
+    stars: 22
   - label: Website
     kind: website
     url: 'https://jimntu.github.io/FailSafe/'
@@ -34,10 +36,7 @@ links:
   - label: Post
     kind: post
     url: 'https://x.com/DJiafei/status/1986136467002040625'
-metrics:
-  citation_count: 7
-  github_stars: 16
 citation:
-  provider: semanticscholar
+  provider: googlescholar
+  google_scholar_id: 'AZP7Hd8AAAAJ:zYLM7Y9cAGgC'
   id: 'arXiv:2510.01642'
-github_repo: Jimntu/FailSafe_code
