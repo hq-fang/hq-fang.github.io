@@ -22,7 +22,7 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/abs/2510.01642'
-    citations: 19
+    citations: 20
   - label: Code
     kind: code
     url: 'https://github.com/Jimntu/FailSafe_code'
