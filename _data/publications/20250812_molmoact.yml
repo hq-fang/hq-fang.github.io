@@ -52,11 +52,11 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/abs/2508.07917'
-    citations: 153
+    citations: 154
   - label: Code
     kind: code
     url: 'https://github.com/allenai/molmoact'
-    stars: 372
+    stars: 373
   - label: Blog
     kind: blog
     url: 'https://allenai.org/blog/molmoact'
