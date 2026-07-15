@@ -27,7 +27,7 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/abs/2602.07845'
-    citations: 13
+    citations: 14
   - label: Code
     kind: code
     url: 'https://github.com/rd-vla/rd-vla'
