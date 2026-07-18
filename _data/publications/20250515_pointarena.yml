@@ -35,7 +35,7 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/abs/2505.09990'
-    citations: 19
+    citations: 20
   - label: Code
     kind: code
     url: 'https://github.com/pointarena/pointarena'
