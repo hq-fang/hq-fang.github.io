@@ -72,7 +72,7 @@ links:
   - label: Code (Models)
     kind: code
     url: 'https://github.com/allenai/MolmoBot'
-    stars: 95
+    stars: 96
   - label: Blog
     kind: blog
     url: 'https://allenai.org/blog/molmobot-robot-manipulation'
