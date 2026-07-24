@@ -52,7 +52,7 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/abs/2508.07917'
-    citations: 160
+    citations: 162
   - label: Code
     kind: code
     url: 'https://github.com/allenai/molmoact'
