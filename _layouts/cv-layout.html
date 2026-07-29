@@ -10,7 +10,7 @@ layout: compress
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %} | {{ site.name | default: site.title }}</title>
+    <title>{{ site.title | escape }}</title>
     {% include head.html %}
     {% include head/custom.html %}
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/cv-layout.css">
