@@ -16,22 +16,27 @@
     await mermaid.run({querySelector:'code.language-mermaid'});
 </script>
 
-<div
-  class="page__footer-map"
-  data-mapmyvisitors-widget
-  data-mapmyvisitors-token="tpWJjuXLG-JA1CgI6Jnx9fXdclNeQ_KhN-tcDYi01o8"
->
+{% assign visitor_map_url = site.visitor_map_url | default: "https://visitor-map.hqfang.workers.dev" %}
+<script defer src="{{ visitor_map_url }}/tracker.js" data-visitor-map-tracker></script>
+<div class="page__footer-map">
     <a
-      class="clustrmaps-link"
-      href="https://mapmyvisitors.com/web/1c4ud"
-      title="Visit tracker"
+      class="visitor-map-link"
+      href="{{ visitor_map_url }}/?theme=light"
+      title="Open visitor statistics"
+      target="_blank"
+      rel="noopener noreferrer"
+      data-visitor-map-link
     >
       <img
-        class="clustrmaps-image"
-        data-mapmyvisitors-image
-        src="https://mapmyvisitors.com/map.png?cl=686277&w=150&t=m&d=tpWJjuXLG-JA1CgI6Jnx9fXdclNeQ_KhN-tcDYi01o8&co=dad7ed&ct=686277&cmo=4f7c82&cmn=c85582"
+        class="visitor-map-image"
+        src="{{ visitor_map_url }}/map.svg?track=0&amp;theme=light"
         alt="Visitor map"
+        width="640"
+        height="330"
+        loading="lazy"
         decoding="async"
+        referrerpolicy="strict-origin-when-cross-origin"
+        data-visitor-map-image
       />
     </a>
 </div>
