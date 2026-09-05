@@ -28,11 +28,11 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/abs/2501.18564'
-    citations: 96
+    citations: 97
   - label: Code
     kind: code
     url: 'https://github.com/sam2act/sam2act'
-    stars: 246
+    stars: 247
   - label: Website
     kind: website
     url: 'https://sam2act.github.io'
