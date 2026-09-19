@@ -56,7 +56,7 @@ links:
   - label: Code
     kind: code
     url: 'https://github.com/allenai/molmoact'
-    stars: 383
+    stars: 384
   - label: Blog
     kind: blog
     url: 'https://allenai.org/blog/molmoact'
