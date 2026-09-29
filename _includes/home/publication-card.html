@@ -53,7 +53,7 @@
     <div class="publication-card__venues">
       {% for venue_line in publication.venue %}
         <p class="publication-card__venue-line{% if forloop.first %} publication-card__venue-line--primary{% endif %}">
-          {{ venue_line.text }}
+          <span class="publication-card__venue-text">{{ venue_line.text }}</span>
           {% if venue_line.note %}
             <span class="publication-card__venue-note{% if venue_line.note_variant %} publication-card__venue-note--{{ venue_line.note_variant }}{% endif %}">{{ venue_line.note }}</span>
           {% endif %}
