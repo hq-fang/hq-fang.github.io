@@ -5,7 +5,9 @@ by_date_asc:
   - 20251002_failsafe
   - 20260208_rd-vla
   - 20260317_molmob0t
+  - 20260505_molmoact2
 
-selected_by_preference:
+selected:
+  - 20260505_molmoact2
   - 20250812_molmoact
   - 20250130_sam2act
