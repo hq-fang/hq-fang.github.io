@@ -66,7 +66,7 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/pdf/2603.16861'
-    citations: 6
+    citations: 8
   - label: Code (Data)
     kind: code
     url: 'https://github.com/allenai/molmospaces'
