@@ -49,6 +49,7 @@ links:
   - label: Code
     kind: code
     url: 'https://github.com/phai-lab/touchscale'
+    stars: 1
   - label: Website
     kind: website
     url: 'https://touch-scale.github.io/'

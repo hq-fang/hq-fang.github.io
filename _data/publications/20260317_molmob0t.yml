@@ -70,7 +70,7 @@ links:
   - label: Code (Data)
     kind: code
     url: 'https://github.com/allenai/molmospaces'
-    stars: 486
+    stars: 488
   - label: Code (Models)
     kind: code
     url: 'https://github.com/allenai/MolmoBot'

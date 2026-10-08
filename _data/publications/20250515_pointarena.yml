@@ -39,7 +39,7 @@ links:
   - label: Code
     kind: code
     url: 'https://github.com/pointarena/pointarena'
-    stars: 39
+    stars: 40
   - label: Website
     kind: website
     url: 'https://pointarena.github.io'
