@@ -1,0 +1,63 @@
+title: 'TouchScale: 500 Hours of Human Vision and Touch for Visual-Tactile Learning'
+date: 2026-10-07
+selected: false
+selected_order: none
+authors:
+  - name: Dayou Li
+    marks: '*'
+  - name: Hao Wang
+    marks: '*'
+  - name: Qianqian Yang
+    marks: '*'
+  - name: Zihao Zhu
+    marks: '*'
+  - name: Haoquan Fang
+    highlight: true
+  - name: Ziyao Zeng
+  - name: Yan Han
+  - name: Zihan Wang
+  - name: Yan Wang
+  - name: Baoru Huang
+  - name: Dilin Wang
+  - name: Kenji Shimada
+  - name: Yiyue Luo
+  - name: Manling Li
+  - name: Teresa Lv
+  - name: Mustafa Mukadam
+  - name: Rakesh Ranjan
+  - name: Ruohan Zhang
+  - name: Qi He
+  - name: Changliu Liu
+  - name: Xu Chen
+  - name: Marco Pavone
+  - name: Bangya Liu
+  - name: Jiachen Li
+  - name: Masayoshi Tomizuka
+  # Corresponding author; the site's dagger legend instead denotes second authors.
+  - name: Zhiwen Fan
+venue:
+  - text: 'arXiv 2026'
+media:
+  type: video
+  src: /images/publications/20261007_touchscale.mp4
+  alt: TouchScale expanding video montage showing diverse human interactions across everyday environments
+  playback_rate: 3
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://arxiv.org/abs/2610.10288'
+  - label: Code
+    kind: code
+    url: 'https://github.com/phai-lab/touchscale'
+  - label: Website
+    kind: website
+    url: 'https://touch-scale.github.io/'
+  - label: Blog
+    kind: blog
+    url: 'https://www.overfitlab.ai/research/touchscale'
+  - label: Dataset
+    kind: dataset
+    url: 'https://huggingface.co/datasets/2077AIDataFoundation/TouchScale'
+citation:
+  provider: googlescholar
+  id: 'arXiv:2610.10288'
