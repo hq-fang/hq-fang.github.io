@@ -455,11 +455,14 @@
 }
 
 .publication-card__venue-line--primary {
+  font-weight: 600;
+  color: var(--global-text-color);
+}
+
+.publication-card__venue-line--primary:not(.publication-card__venue-line--inline-note) {
   flex-direction: column;
   align-items: flex-start;
   row-gap: 0;
-  font-weight: 600;
-  color: var(--global-text-color);
 
   .publication-card__venue-note {
     display: block;
@@ -715,7 +718,7 @@ html[data-theme="dark"] {
     color: var(--global-text-color);
   }
 
-  .publication-card__venue-line--primary .publication-card__venue-note {
+  .publication-card__venue-line--primary:not(.publication-card__venue-line--inline-note) .publication-card__venue-note {
     border: 0;
     background: transparent;
     color: var(--global-text-color);

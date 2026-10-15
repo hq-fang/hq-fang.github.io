@@ -52,10 +52,14 @@
 
     <div class="publication-card__venues">
       {% for venue_line in publication.venue %}
-        <p class="publication-card__venue-line{% if forloop.first %} publication-card__venue-line--primary{% endif %}">
+        {% assign note_variant = venue_line.note_variant %}
+        {% if note_variant == 'workshop award' %}
+          {% assign note_variant = 'award' %}
+        {% endif %}
+        <p class="publication-card__venue-line{% if forloop.first %} publication-card__venue-line--primary{% endif %}{% if venue_line.note_variant == 'workshop award' %} publication-card__venue-line--inline-note{% endif %}">
           <span class="publication-card__venue-text">{{ venue_line.text }}</span>
           {% if venue_line.note %}
-            <span class="publication-card__venue-note{% if venue_line.note_variant %} publication-card__venue-note--{{ venue_line.note_variant }}{% endif %}">{{ venue_line.note }}</span>
+            <span class="publication-card__venue-note{% if note_variant %} publication-card__venue-note--{{ note_variant }}{% endif %}">{{ venue_line.note }}</span>
           {% endif %}
         </p>
       {% endfor %}
