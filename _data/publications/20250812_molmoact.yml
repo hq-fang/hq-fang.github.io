@@ -1,7 +1,7 @@
 title: 'MolmoAct: Action Reasoning Models that can Reason in Space'
 date: 2025-08-12
 selected: true
-selected_order: 1
+selected_order: none
 authors:
   - name: Jason Lee
     marks: '*§'
@@ -52,9 +52,11 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/abs/2508.07917'
+    citations: 244
   - label: Code
     kind: code
     url: 'https://github.com/allenai/molmoact'
+    stars: 393
   - label: Blog
     kind: blog
     url: 'https://allenai.org/blog/molmoact'
@@ -76,19 +78,13 @@ links:
   - label: GeekWire
     kind: report
     url: 'https://www.geekwire.com/2025/ai2-unveils-molmoact-an-open-source-robotics-system-that-reasons-in-3D-and-adjusts-on-the-fly/'
-  - label: Business Wire
-    kind: report
-    url: 'https://www.businesswire.com/news/home/20250812422452/en/Ai2-Unveils-MolmoAct-a-New-Class-of-AI-Model-That-Reasons-in-3D-Space'
   - label: The Robot Report
     kind: report
     url: 'https://www.therobotreport.com/ai2-says-new-molmoact-7b-model-brings-ai-into-the-physical-world/'
   - label: SiliconANGLE
     kind: report
     url: 'https://siliconangle.com/2025/08/12/ai2-releases-open-ai-model-allows-robots-plan-movements-3d-space/'
-metrics:
-  citation_count: 95
-  github_stars: 317
 citation:
-  provider: semanticscholar
+  provider: googlescholar
+  google_scholar_id: 'O-D4QqsAAAAJ:9yKSN-GCB0IC'
   id: 'arXiv:2508.07917'
-github_repo: allenai/molmoact

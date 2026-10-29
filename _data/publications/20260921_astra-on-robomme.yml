@@ -1,0 +1,35 @@
+title: 'Can Astra Solve RoboMME without Breaking the Bank?'
+date: 2026-09-21
+selected: false
+selected_order: none
+authors:
+  - name: Bingao Chen
+  - name: Haoquan Fang
+    highlight: true
+  - name: C. Karen Liu
+venue:
+  - text: 'Agentic Robotics @ CoRL 2026'
+media:
+  type: video
+  src: /images/publications/20260921_astra-on-robomme.mp4
+  alt: Astra solving RoboMME tasks in a cost-effective manner
+  playback_rate: 3
+links:
+  # - label: Paper
+  #   kind: paper
+  #   url: 'https://arxiv.org/abs/2610.10288'
+  #   citations: 0
+  - label: Code
+    kind: code
+    url: 'https://github.com/bingaochen/Astra-on-RoboMME'
+    stars: 30
+  - label: Website
+    kind: website
+    url: 'https://bingaochen.github.io/Astra-on-RoboMME/'
+  - label: Post
+    kind: post
+    url: 'https://x.com/hq_fang/status/2102152925476704340'
+# citation:
+#   provider: googlescholar
+#   google_scholar_id: 'O-D4QqsAAAAJ:roLk4NBRz8UC'
+#   id: 'arXiv:2610.10288'
