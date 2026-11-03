@@ -7,19 +7,17 @@
   background-color: var(--global-footer-bg-color);
   color: var(--global-text-color-light);
 
-  float: left;
   margin-left: 0;
   margin-right: 0;
   width: 100%;
   clear: both;
 
-  /* sticky footer fix start */
-  position: absolute;
-  bottom: 0em;
+  /* Sticky footer: stays in normal flow at the end of the page (body is a flex column,
+     see _base.scss) instead of being absolutely positioned and pushed down by JavaScript.
+     4em = the old 3em margin + the 1em bottom padding body used to have. */
+  flex-shrink: 0;
   height: auto;
-  /* sticky footer fix end */
-
-  margin-top: 3em;
+  margin-top: 4em;
 
   -webkit-animation: intro 0.3s both;
           animation: intro 0.3s both;

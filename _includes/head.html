@@ -2,20 +2,26 @@
 
 <meta charset="utf-8">
 
+<script>
+  /* Runs before first paint: apply the visitor's saved theme (set with the toggle) so
+     dark-mode visitors never see a flash of the light theme, however slow the network is. */
+  (function (root) {
+    var theme;
+    try { theme = localStorage.getItem("theme"); } catch (e) {}
+    if (theme === "dark") { root.setAttribute("data-theme", "dark"); }
+    else if (theme === "light") { root.removeAttribute("data-theme"); }
+    root.className = root.className.replace(/\bno-js\b/g, "") + " js";
+  })(document.documentElement);
+</script>
+
 {% include seo.html %}
 
 <link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ base_path }}/feed.xml{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script>
-  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
-</script>
-
-<!-- For all browsers -->
-<link rel="stylesheet" href="{{ base_path }}/assets/css/main.css">
-
-<meta http-equiv="cleartype" content="on">
+{% comment %}
+  `?v=` busts browser caches on every deploy (GitHub Pages caches assets for 10 minutes,
+  which otherwise lets fresh HTML render with stale CSS/JS right after a push).
+{% endcomment %}
+<link rel="stylesheet" href="{{ base_path }}/assets/css/main.css?v={{ site.time | date: '%s' }}">

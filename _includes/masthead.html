@@ -4,7 +4,8 @@
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <button><div class="navicon"></div></button>
+        {% comment %} Starts hidden (no flash on wide screens); assets/js/site.js shows it when links overflow. {% endcomment %}
+        <button class="hidden"><div class="navicon"></div></button>
         <ul class="visible-links">
           <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/#about" data-nav-section="about">{{ site.mast_title }}</a></li>
           {% for link in site.data.navigation.main %}

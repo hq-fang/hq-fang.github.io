@@ -5,6 +5,12 @@ html {
   /* sticky footer fix */
   position: relative;
   min-height: 100%;
+  /* in-page links stop below the fixed masthead (replaces the old jQuery smooth-scroll offset) */
+  scroll-padding-top: 73.7px; /* 70px after the 0.95 zoom below */
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
 
   @media screen {
     /* Scale the entire page, including text, images, and spacing. */
@@ -19,7 +25,12 @@ body {
 
   margin: 0;
   padding: $masthead-height 0 0;
-  padding-bottom: 1em; /* make bottom white space smaller */
+  /* Sticky footer in pure CSS (the footer used to be absolutely positioned and pushed down
+     by JavaScript, so it covered the last section until scripts loaded). The old 1em bottom
+     padding is now part of the footer's top margin, so the spacing is unchanged. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: $global-font-family;
   font-size: 0.95rem;
   line-height: 1.6;

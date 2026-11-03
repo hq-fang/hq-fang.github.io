@@ -1,3 +1,18 @@
+# Site notes (hq-fang.github.io)
+
+How this site differs from the stock template, and how to maintain it:
+
+- **Publication videos** are lazy-loaded behind a poster image. After adding or replacing an
+  MP4 in `images/publications/`, generate its poster (macOS): `swift scripts/make_video_posters.swift`.
+- **News**: the list has `class="home-news__list is-collapsed"`, so only the first 5 items show (from the
+  first paint) until the chevron is clicked.
+- **JavaScript** is a single dependency-free file, `assets/js/site.js` (no jQuery, no npm build step).
+  MathJax, Mermaid and Plotly are loaded by it only on pages that contain maths / mermaid / plotly blocks.
+- **Theme**: a visitor's saved light/dark choice is applied before first paint by the inline script in
+  `_includes/head.html` (no flash of the wrong theme on slow connections).
+
+---
+
 # Academic Pages
 **Academic Pages is a GitHub Pages template for personal and professional portfolio-oriented websites.**
 

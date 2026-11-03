@@ -24,7 +24,7 @@ visitor_map_url          : "https://visitor-map.hqfang.workers.dev"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "bio-photo-real.jpg"
+  avatar           : "avatar.jpg" # 360px web copy of bio-photo-real.jpg (the 1MB original is kept as the source)
   name             : "Haoquan Fang"
   pronouns         : # example: "she/her"  
   bio              : "CS PhD Student @ Stanford</br>Research Intern @ NVIDIA"
@@ -143,7 +143,7 @@ facebook:
   app_id                 :
   publisher              :
 og_image                 :  # Social media default site image
-og_description           :  # Social media default site image description
+og_description           : "Haoquan Fang is a CS PhD student at Stanford University working on robot learning." # Search / link-preview description
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:

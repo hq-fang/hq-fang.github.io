@@ -17,7 +17,7 @@ My research interests lie broadly in robot learning. In particular, I focus on d
 
 
 ## 🔥 News {#news}
-<ul class="home-news__list" id="news-list" data-collapsible-list data-initial-limit="5" data-expand-label="Expand news" data-collapse-label="Collapse news">
+<ul class="home-news__list is-collapsed" id="news-list" data-collapsible-list data-initial-limit="5" data-expand-label="Expand news" data-collapse-label="Collapse news">
   <li><strong>[2026/11]</strong> Our paper <em>MolmoAct2: Action Reasoning Models for Real-World Deployment</em> won <span style="color:red;">Best Paper Award</span> at <a href="https://actiongapworkshop.github.io/">TAG</a> @ CoRL 2026.</li>
   <li><strong>[2026/11]</strong> Honored to be selected as the <a href="https://www.corl.org/program/outstanding-reviewers-and-acs/">CoRL 2026 Outstanding Reviewer</a>!</li>
   <li><strong>[2026/10]</strong> Our paper <em>TouchScale: 500 Hours of Human Vision and Touch for Visual-Tactile Learning</em> has been preprinted to arXiv.</li>
@@ -105,7 +105,7 @@ My research interests lie broadly in robot learning. In particular, I focus on d
   <article class="education-entry">
     <div class="education-entry__media">
       <div class="education-entry__media-frame">
-        <img class="education-entry__logo" src="{{ '/images/logos/logo_stanford.png' | relative_url }}" alt="Stanford University logo">
+        <img class="education-entry__logo" src="{{ '/images/logos/logo_stanford.png' | relative_url }}" alt="Stanford University logo" width="660" height="330" loading="lazy" decoding="async">
       </div>
     </div>
     <div class="education-entry__body">
@@ -119,7 +119,7 @@ My research interests lie broadly in robot learning. In particular, I focus on d
   <article class="education-entry">
     <div class="education-entry__media">
       <div class="education-entry__media-frame">
-        <img class="education-entry__logo education-entry__logo--uw" src="{{ '/images/logos/logo_uw.png' | relative_url }}" alt="University of Washington logo">
+        <img class="education-entry__logo education-entry__logo--uw" src="{{ '/images/logos/logo_uw.png' | relative_url }}" alt="University of Washington logo" width="746" height="367" loading="lazy" decoding="async">
       </div>
     </div>
     <div class="education-entry__body">
@@ -140,7 +140,7 @@ My research interests lie broadly in robot learning. In particular, I focus on d
   <article class="industry-entry">
     <div class="industry-entry__media">
       <div class="industry-entry__media-frame">
-        <img class="industry-entry__logo industry-entry__logo--nvidia" src="{{ '/images/logos/logo_nvidia.png' | relative_url }}" alt="NVIDIA logo">
+        <img class="industry-entry__logo industry-entry__logo--nvidia" src="{{ '/images/logos/logo_nvidia.png' | relative_url }}" alt="NVIDIA logo" width="640" height="360" loading="lazy" decoding="async">
       </div>
     </div>
     <div class="industry-entry__body">
@@ -156,7 +156,7 @@ My research interests lie broadly in robot learning. In particular, I focus on d
   <article class="industry-entry">
     <div class="industry-entry__media">
       <div class="industry-entry__media-frame">
-        <img class="industry-entry__logo industry-entry__logo--ai2" src="{{ '/images/logos/logo_ai2.png' | relative_url }}" alt="Allen Institute for AI logo">
+        <img class="industry-entry__logo industry-entry__logo--ai2" src="{{ '/images/logos/logo_ai2.png' | relative_url }}" alt="Allen Institute for AI logo" width="1000" height="440" loading="lazy" decoding="async">
       </div>
     </div>
     <div class="industry-entry__body">

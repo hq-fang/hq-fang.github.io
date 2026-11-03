@@ -5,6 +5,23 @@
   {% else %}
     {% assign media_src = publication.media.src | relative_url %}
   {% endif %}
+  {% comment %}
+    Video poster: shown instantly (and kept on slow / data-saver connections) while the MP4 is
+    lazy-loaded by assets/js/site.js. Defaults to <video>.jpg next to a local .mp4 -- generate
+    it with `swift scripts/make_video_posters.swift` -- or set media.poster explicitly.
+  {% endcomment %}
+  {% assign poster_src = nil %}
+  {% if publication.media.poster %}
+    {% if publication.media.poster contains "://" %}
+      {% assign poster_src = publication.media.poster %}
+    {% else %}
+      {% assign poster_src = publication.media.poster | relative_url %}
+    {% endif %}
+  {% elsif publication.media.type == "video" %}
+    {% unless publication.media.src contains "://" %}
+      {% assign poster_src = media_src | replace: ".mp4", ".jpg" %}
+    {% endunless %}
+  {% endif %}
 {% endif %}
 
 <article class="publication-card">
@@ -12,16 +29,18 @@
     <div class="publication-card__media">
       <div class="publication-card__media-frame{% if publication.media.fit == 'contain' %} is-contain{% endif %}">
         {% if publication.media.type == "video" %}
+          {% if poster_src %}
+            <img class="publication-card__poster" src="{{ poster_src }}" alt="" loading="lazy" decoding="async">
+          {% endif %}
           <video
             class="publication-card__video"
-            src="{{ media_src }}"
-            autoplay
+            data-src="{{ media_src }}"
             muted
             loop
             playsinline
             webkit-playsinline
             disablepictureinpicture
-            preload="metadata"
+            preload="none"
             data-playback-rate="{{ publication.media.playback_rate | default: 1 }}"
             aria-label="{{ publication.media.alt }}">
           </video>

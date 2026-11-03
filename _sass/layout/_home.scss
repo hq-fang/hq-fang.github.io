@@ -277,19 +277,50 @@
   font-size: 0.95em;
 }
 
-.home-news__list--extra {
-  overflow: hidden;
-  max-height: 0;
-  margin-top: -1rem;
-  margin-bottom: 0;
-  opacity: 0;
-  transition: max-height 0.16s ease, opacity 0.14s ease, margin-top 0.16s ease, margin-bottom 0.16s ease;
+/* Collapsed news: items after the 5th are hidden from the very first paint (html.js is
+   set synchronously in <head>), instead of being moved out by JavaScript after load.
+   The control margins/paddings below reproduce the old two-list layout exactly (the
+   hidden extra list had margin-top: -1rem when collapsed and margin-bottom: 1.5rem when
+   expanded; the controls had margin-top: 0.35rem). */
+html.js .home-news__list.is-collapsed > li:nth-child(n+6) {
+  display: none;
 }
 
-.home-news__list--extra.is-expanded {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  opacity: 1;
+html:not(.js) .home-news__list.is-collapsed::after {
+  display: none;
+}
+
+.home-news__list.is-collapsed + .home-news__controls {
+  margin-top: -1rem;
+  padding-top: 0.35rem;
+  pointer-events: none;
+}
+
+.home-news__list.is-collapsed + .home-news__controls .home-news__toggle {
+  pointer-events: auto;
+}
+
+.home-news__list[data-collapsible-list]:not(.is-collapsed) + .home-news__controls {
+  margin-top: 1.5rem;
+  padding-top: 0.65rem;
+}
+
+.home-news__list[data-collapsible-list]:not(.is-collapsed) > li:nth-child(n+6) {
+  animation: home-news-reveal 0.16s ease both;
+}
+
+/* the old extra list clipped its items (overflow: hidden); keep that (e.g. italic overhangs) */
+.home-news__list[data-collapsible-list] > li:nth-child(n+6) {
+  overflow: hidden;
+}
+
+@keyframes home-news-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .home-news__controls {
@@ -382,6 +413,27 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Lazy-loaded videos (assets/js/site.js): the poster frame is shown until the video plays */
+.publication-card__poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.publication-card__video {
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.publication-card__media-frame.is-playing .publication-card__video {
+  opacity: 1;
 }
 
 .publication-card__media-frame.is-contain {

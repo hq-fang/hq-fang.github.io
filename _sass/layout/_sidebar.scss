@@ -17,6 +17,14 @@
     margin-top: 1em;
   }
 
+  /* #main is a flex item now (sticky footer), so this margin no longer collapses into
+     #main's own top margin -- drop it to keep the original spacing */
+  @media screen and (max-width: #{$sidebar-screen-min-width - 1px}) {
+    #main > &:first-child {
+      margin-top: 0;
+    }
+  }
+
   @media screen and (min-width: $sidebar-screen-min-width) {
     height: 100vh;
     overflow-y: auto;               // Add scrollbar if the sidebar is too long
