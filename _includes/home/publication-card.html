@@ -6,21 +6,29 @@
     {% assign media_src = publication.media.src | relative_url %}
   {% endif %}
   {% comment %}
-    Video poster: shown instantly (and kept on slow / data-saver connections) while the MP4 is
-    lazy-loaded by assets/js/site.js. Defaults to <video>.jpg next to a local .mp4 -- generate
-    it with `swift scripts/make_video_posters.swift` -- or set media.poster explicitly.
+    Video poster: shown instantly (and kept on slow / data-saver connections) while the video is
+    lazy-loaded by assets/js/site.js. Set media.poster, or put <name>.jpg next to a local <name>.mp4
+    (`swift scripts/make_video_posters.swift`). Without a poster the video is embedded as before.
   {% endcomment %}
   {% assign poster_src = nil %}
-  {% if publication.media.poster %}
-    {% if publication.media.poster contains "://" %}
-      {% assign poster_src = publication.media.poster %}
+  {% if publication.media.type == "video" %}
+    {% if publication.media.poster %}
+      {% if publication.media.poster contains "://" %}
+        {% assign poster_src = publication.media.poster %}
+      {% else %}
+        {% assign poster_src = publication.media.poster | relative_url %}
+      {% endif %}
     {% else %}
-      {% assign poster_src = publication.media.poster | relative_url %}
+      {% assign media_ext = publication.media.src | split: "." | last | downcase %}
+      {% unless publication.media.src contains "://" or media_ext != "mp4" %}
+        {% assign poster_len = publication.media.src | size | minus: 4 %}
+        {% assign poster_path = publication.media.src | slice: 0, poster_len | append: ".jpg" %}
+        {% assign poster_file = site.static_files | where: "path", poster_path | first %}
+        {% if poster_file %}
+          {% assign poster_src = poster_path | relative_url %}
+        {% endif %}
+      {% endunless %}
     {% endif %}
-  {% elsif publication.media.type == "video" %}
-    {% unless publication.media.src contains "://" %}
-      {% assign poster_src = media_src | replace: ".mp4", ".jpg" %}
-    {% endunless %}
   {% endif %}
 {% endif %}
 
@@ -34,13 +42,13 @@
           {% endif %}
           <video
             class="publication-card__video"
-            data-src="{{ media_src }}"
+            {% if poster_src %}data-src="{{ media_src }}" preload="none"{% else %}src="{{ media_src }}" autoplay preload="metadata"{% endif %}
             muted
             loop
             playsinline
             webkit-playsinline
             disablepictureinpicture
-            preload="none"
+            disableremoteplayback
             data-playback-rate="{{ publication.media.playback_rate | default: 1 }}"
             aria-label="{{ publication.media.alt }}">
           </video>
@@ -115,6 +123,8 @@
                     <i class="fa-solid fa-blog" aria-hidden="true"></i>
                   {% when "report" %}
                     <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
+                  {% when "leaderboard" %}
+                    <i class="fa-solid fa-ranking-star" aria-hidden="true"></i>
                   {% else %}
                     <i class="fa-solid fa-link" aria-hidden="true"></i>
                 {% endcase %}
@@ -161,6 +171,8 @@
                   <i class="fa-solid fa-blog" aria-hidden="true"></i>
                 {% when "report" %}
                   <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
+                {% when "leaderboard" %}
+                  <i class="fa-solid fa-ranking-star" aria-hidden="true"></i>
                 {% else %}
                   <i class="fa-solid fa-link" aria-hidden="true"></i>
               {% endcase %}

@@ -1,13 +1,16 @@
 by_date_asc:
+  - 20241206_daug
   - 20250130_sam2act
   - 20250515_pointarena
   - 20250812_molmoact
   - 20251002_failsafe
+  - 20251206_qrad
   - 20260208_rd-vla
   - 20260317_molmob0t
   - 20260505_molmoact2
   - 20260921_astra-on-robomme
   - 20261007_touchscale
+  - 20261102_robocolosseum
 
 selected:
   - 20260505_molmoact2

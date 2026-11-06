@@ -11,6 +11,17 @@
     if (theme === "dark") { root.setAttribute("data-theme", "dark"); }
     else if (theme === "light") { root.removeAttribute("data-theme"); }
     root.className = root.className.replace(/\bno-js\b/g, "") + " js";
+
+    /* Expand / collapse buttons for lists that CSS collapses from first paint (the news list).
+       Handled here, not in site.js, so the button works even before / without that script. */
+    document.addEventListener("click", function (event) {
+      var toggle = event.target.closest && event.target.closest("[data-list-toggle]");
+      var list = toggle && document.getElementById(toggle.getAttribute("aria-controls"));
+      if (!list) { return; }
+      var collapsed = list.classList.toggle("is-collapsed");
+      toggle.setAttribute("aria-expanded", String(!collapsed));
+      toggle.setAttribute("aria-label", list.getAttribute(collapsed ? "data-expand-label" : "data-collapse-label") || "");
+    });
   })(document.documentElement);
 </script>
 

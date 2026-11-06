@@ -134,8 +134,9 @@
   <meta property="og:image" content="{% if page.header.image contains "://" %}{{ page.header.image }}{% else %}{{ page.header.image | prepend: "/images/" | prepend: base_path }}{% endif %}">
 {% elsif page.header.overlay_image %}
   <meta property="og:image" content="{% if page.header.overlay_image contains "://" %}{{ page.header.overlay_image }}{% else %}{{ page.header.overlay_image | prepend: "/images/" | prepend: base_path }}{% endif %}">
-{% elsif site.author.avatar %}
-  {% comment %} Default link-preview image (Slack, iMessage, X, ...): the author photo. {% endcomment %}
-  <meta property="og:image" content="{% if site.author.avatar contains "://" %}{{ site.author.avatar }}{% else %}{{ site.author.avatar | prepend: "/images/" | absolute_url }}{% endif %}">
+{% elsif site.og_image or site.author.avatar %}
+  {% comment %} Default link-preview image (Slack, iMessage, X, ...): og_image, else the author photo. {% endcomment %}
+  {% assign og_default_image = site.og_image | default: site.author.avatar %}
+  <meta property="og:image" content="{% if og_default_image contains "://" %}{{ og_default_image }}{% else %}{{ og_default_image | prepend: "/images/" | absolute_url }}{% endif %}">
 {% endif %}
 <!-- end Open Graph protocol -->

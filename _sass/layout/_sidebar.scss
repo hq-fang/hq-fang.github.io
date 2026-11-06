@@ -111,7 +111,7 @@
   }
 
   img {
-    max-width: 175px;
+    max-width: 150px; /* avatar size in the left author bar */
     border-radius: 50%;
 
     @include breakpoint($large) {
@@ -469,5 +469,24 @@ html[data-theme="dark"] {
       border-color: transparent;
       box-shadow: none;
     }
+  }
+}
+
+/* Mobile / tablet profile: larger text next to the photo (tune the sizes here) */
+@media screen and (max-width: #{$sidebar-screen-min-width - 1px}) {
+  .sidebar .author__name {
+    font-size: 1.5rem;
+  }
+
+  .sidebar .author__bio {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .author__urls .fa,
+  .author__urls .fab,
+  .author__urls .fas,
+  .author__urls .ai {
+    font-size: 1.2rem;
   }
 }

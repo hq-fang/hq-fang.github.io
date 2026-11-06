@@ -1,0 +1,31 @@
+title: 'QRad: Enhancing Radiology Report Generation by Captioning-to-VQA Reframing'
+# Only public on OpenReview (no arXiv; camera-ready PDF created 2025-11-01); dated to the NeurIPS 2025 workshop days (Dec 6-7, 2025).
+date: 2025-12-06
+selected: false
+selected_order: none
+authors:
+  - name: Ying Jin
+  - name: Noel C. F. Codella
+  - name: Yanbo Xu
+  - name: Yu Gu
+  - name: Mu Wei
+  - name: Haoquan Fang
+    highlight: true
+  - name: Thomas Lin
+  - name: Paul Vozila
+  - name: Jenq-Neng Hwang
+venue:
+  - text: 'GenAI4Health @ NeurIPS 2025'
+# Figure 1 of the paper (https://openreview.net/pdf?id=iM4KjQWVQU).
+media:
+  type: image
+  src: /images/publications/20251206_qrad.jpg
+  alt: QRad overview, reframing radiology report generation from captioning to visual question answering
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://openreview.net/pdf?id=iM4KjQWVQU'
+    citations: 2
+citation:
+  provider: googlescholar
+  google_scholar_id: 'O-D4QqsAAAAJ:d1gkVwhDpl0C'

@@ -4,7 +4,7 @@
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        {% comment %} Starts hidden (no flash on wide screens); assets/js/site.js shows it when links overflow. {% endcomment %}
+        {% comment %} Starts hidden (no flash on wide screens); the inline script below shows it when links overflow. {% endcomment %}
         <button class="hidden"><div class="navicon"></div></button>
         <ul class="visible-links">
           <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/#about" data-nav-section="about">{{ site.mast_title }}</a></li>
@@ -30,3 +30,105 @@
     </div>
   </div>
 </div>
+
+<script>
+  /* Priority ("greedy") navigation: moves masthead links that don't fit into the hamburger
+     dropdown, right to left. Inline, right after the markup, so it runs before first paint:
+     an inline script waits for the stylesheet, so the measurements are right however slow
+     the network is. (When this lived in the deferred site.js, slow mobile connections showed
+     every link in one overflowing row until that file arrived.)
+     Only block comments, explicit semicolons and braces: the production `compress` layout
+     may join lines. */
+  (function () {
+    var nav = document.getElementById("site-nav");
+    if (!nav) { return; }
+    var button = nav.querySelector(":scope > button");
+    var visible = nav.querySelector(".visible-links");
+    var hidden = nav.querySelector(".hidden-links");
+    var tail = visible.querySelector(":scope > .persist.tail");
+    var breaks = [];
+
+    var movable = function () { return visible.querySelectorAll(":scope > li:not(.persist)"); };
+    /* Content-box width, measured like jQuery's .width(), so links collapse at the same widths as before. */
+    var width = function (element) {
+      var style = window.getComputedStyle(element);
+      var value = parseFloat(style.width) || 0;
+      if (style.boxSizing === "border-box") {
+        value -= parseFloat(style.paddingLeft) + parseFloat(style.paddingRight) +
+          parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth);
+      }
+      return value;
+    };
+    var availableSpace = function () {
+      return button.classList.contains("hidden") ? width(nav) : width(nav) - width(button) - 30;
+    };
+
+    var setOpen = function (open) {
+      hidden.classList.toggle("hidden", !open);
+      button.classList.toggle("close", open);
+      button.setAttribute("aria-expanded", String(open));
+    };
+
+    var update = function () {
+      var space = availableSpace();
+      var items;
+      if (width(visible) > space) {
+        while (width(visible) > space && movable().length > 0) {
+          breaks.push(width(visible));
+          items = movable();
+          hidden.insertBefore(items[items.length - 1], hidden.firstChild);
+          button.classList.remove("hidden");
+          space = availableSpace();
+        }
+      } else {
+        while (breaks.length > 0 && space > breaks[breaks.length - 1]) {
+          visible.insertBefore(hidden.firstElementChild, tail);
+          breaks.pop();
+        }
+        if (breaks.length === 0) {
+          button.classList.add("hidden");
+          setOpen(false);
+        }
+      }
+
+      /* Offset the page (and the fixed sidebar, once it exists) by the masthead's actual height. */
+      var masthead = nav.closest(".masthead");
+      var sidebar = document.querySelector(".sidebar");
+      var height = parseFloat(window.getComputedStyle(masthead).height) + "px";
+      if (document.body) { document.body.style.paddingTop = height; }
+      if (sidebar) { sidebar.style.paddingTop = height; }
+    };
+
+    var frame = 0;
+    var scheduleUpdate = function () {
+      if (!frame) {
+        frame = window.requestAnimationFrame(function () {
+          frame = 0;
+          update();
+        });
+      }
+    };
+
+    button.addEventListener("click", function (event) {
+      event.stopPropagation();
+      setOpen(hidden.classList.contains("hidden"));
+    });
+    hidden.addEventListener("click", function (event) {
+      if (event.target.closest("a")) { setOpen(false); }
+    });
+    document.addEventListener("click", function (event) {
+      if (!nav.contains(event.target)) { setOpen(false); }
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") { setOpen(false); }
+    });
+    window.addEventListener("resize", scheduleUpdate);
+    /* Re-measure once the rest of the page exists (the sidebar comes later in the HTML). */
+    document.addEventListener("DOMContentLoaded", scheduleUpdate);
+
+    /* The original script made its first measurement with the button visible; do the same
+       (synchronously, so nothing flashes) so links collapse at the same widths. */
+    button.classList.remove("hidden");
+    update();
+  })();
+</script>

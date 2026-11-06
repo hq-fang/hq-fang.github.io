@@ -1,0 +1,26 @@
+title: 'DAug: Diffusion-based Channel Augmentation for Radiology Image Retrieval and Classification'
+date: 2024-12-06
+selected: false
+selected_order: none
+authors:
+  - name: Ying Jin
+  - name: Zhuoran Zhou
+  - name: Haoquan Fang
+    highlight: true
+  - name: Jenq-Neng Hwang
+venue:
+  - text: 'AIM-FM @ NeurIPS 2024'
+# Main figure of the paper (Figure 1, figs/ddpm.pdf in the arXiv source).
+media:
+  type: image
+  src: /images/publications/20241206_daug.jpg
+  alt: DAug pipeline, a classifier-guided diffusion model turning a chest X-ray into disease heatmaps used as extra image channels
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://arxiv.org/abs/2412.04828'
+    citations: 3
+citation:
+  provider: googlescholar
+  google_scholar_id: 'O-D4QqsAAAAJ:YsMSGLbcyi4C'
+  id: 'arXiv:2412.04828'

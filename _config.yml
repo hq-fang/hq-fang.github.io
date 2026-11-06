@@ -172,7 +172,6 @@ exclude:
   - .github
   - .jekyll-assets-cache
   - .sass-cache
-  - assets/js/_main.js
   - assets/js/plugins
   - assets/js/vendor
   - CHANGELOG

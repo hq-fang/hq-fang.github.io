@@ -60,7 +60,8 @@
   .archive {
     float: none;
     width: auto;
-    margin-left: calc(#{$sidebar-link-max-width} + 0.5rem);
+    /* gap between the left author sidebar and the main content: tune the 2rem */
+    margin-left: calc(#{$sidebar-link-max-width} + 2rem);
     margin-right: 0;
     padding-left: 0;
     padding-right: 0;
@@ -70,6 +71,7 @@
 .page__title {
   margin-top: 0;
   line-height: 1;
+  font-size: 1.5em; /* same size as the page title (h1), e.g. "About" */
 
   & + .page__meta {
     margin-top: -0.5em;
@@ -87,6 +89,8 @@
 
   h2 {
     color: var(--global-text-color);
+    font-size: 1.5em; /* same size as the page title (h1), e.g. "About" */
+    margin-top: 4rem; /* gap above each section; rem = fixed, doesn't change with the heading size */
     padding-bottom: 0.5em;
     border-bottom: 1px solid var(--global-border-color);
   }

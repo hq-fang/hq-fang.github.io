@@ -1,0 +1,88 @@
+title: 'RoboColosseum: Evaluating Physical Intelligence at Scale In-The-Wild'
+date: 2026-11-02
+selected: false
+selected_order: none
+# Paper marks: † co-first -> '*', ♥ core contributor -> '§'.
+authors:
+  - name: Tan Sang Nguyen
+    marks: '*§'
+  - name: Yi Ru Wang
+    marks: '*§'
+  - name: Shailesh Shailesh
+    marks: '*§'
+  - name: Gang Yang
+    marks: '§'
+  - name: Jiamo Hu
+    marks: '§'
+  - name: Jianuo Jiang
+    marks: '§'
+  - name: Haoquan Fang
+    marks: '§'
+    highlight: true
+  - name: Zhongzheng Ren
+    marks: '§'
+  - name: Zhongyi Luo
+    marks: '§'
+  - name: Ian Chong
+    marks: '§'
+  - name: Aaron Tung
+    marks: '§'
+  - name: Santiago Pravisani
+    marks: '§'
+  - name: Minghui Lin
+  - name: Yao Mo
+  - name: Ishneet Singh
+  - name: Benjamin Tee
+  - name: Harold Soh
+  - name: Siddhartha Srinivasa
+  - name: Dieter Fox
+  - name: David Hsu
+  - name: Haoming Song
+  - name: Maxime Ellerbach
+  - name: Thomas Wolf
+  - name: Pepijn Kooijmans
+    marks: '§'
+  - name: Ruijie He
+    marks: '§'
+  - name: Michael Cho
+    marks: '§'
+  # Also the corresponding author (*), which the site legend does not show.
+  - name: Jiafei Duan
+    marks: '§'
+venue:
+  - text: 'arXiv 2026'
+media:
+  type: video
+  src: /images/publications/20261102_robocolosseum.mp4
+  alt: RoboColosseum trailer showing robots evaluated in the wild, under a tree, on a campus walkway, and in a library
+  playback_rate: 2
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://arxiv.org/abs/2611.02497'
+    citations: 0
+  - label: Code
+    kind: code
+    url: 'https://github.com/RoboColosseum/RoboColosseum'
+    stars: 5
+  - label: Website
+    kind: website
+    url: 'https://robocolosseum.ai/'
+  - label: Blog
+    kind: blog
+    url: 'https://robocolosseum.ai/blog/evaluating-physical-intelligence-in-the-wild/'
+  - label: Leaderboard
+    kind: leaderboard
+    url: 'https://robocolosseum.ai/leaderboard'
+  - label: Models
+    kind: models
+    url: 'https://huggingface.co/collections/RoboColosseum/robocolosseum-models'
+  - label: Datasets
+    kind: dataset
+    url: 'https://huggingface.co/collections/RoboColosseum/robocolosseum-datasets'
+  - label: Post
+    kind: post
+    url: 'https://x.com/hq_fang/status/2118107864665587726'
+citation:
+  provider: googlescholar
+  id: 'arXiv:2611.02497'

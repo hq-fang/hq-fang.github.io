@@ -2,8 +2,10 @@
    BASE ELEMENTS
    ========================================================================== */
 html {
-  /* sticky footer fix */
+  /* sticky footer fix: body fills at least the window (percentages, unlike vh, are not
+     shrunk by the zoom below) */
   position: relative;
+  height: 100%;
   min-height: 100%;
   /* in-page links stop below the fixed masthead (replaces the old jQuery smooth-scroll offset) */
   scroll-padding-top: 73.7px; /* 70px after the 0.95 zoom below */
@@ -14,7 +16,7 @@ html {
 
   @media screen {
     /* Scale the entire page, including text, images, and spacing. */
-    zoom: 0.95;
+    zoom: 0.9;
   }
 }
 
@@ -30,7 +32,7 @@ body {
      padding is now part of the footer's top margin, so the spacing is unchanged. */
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100%;
   font-family: $global-font-family;
   font-size: 0.95rem;
   line-height: 1.6;
@@ -232,7 +234,7 @@ li ol {
 .page__content ul:not(.home-news__list):not(.home-news__list--extra) ul > li::before {
   content: "\25E6";
   top: 0.1em;
-  color: rgba(110, 89, 207, 0.82);
+  color: rgba(108, 78, 173, 0.82);
 }
 
 .page__content ol {
