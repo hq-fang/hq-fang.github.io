@@ -19,22 +19,22 @@ My research interests lie broadly in robot learning. In particular, I focus on d
 ## News {#news}
 <ul class="home-news__list is-collapsed" id="news-list" data-collapsible-list data-expand-label="Expand news" data-collapse-label="Collapse news">
   <li><span class="list-date">Nov 2026</span>We are launching <em><a href="https://robocolosseum.ai/blog/evaluating-physical-intelligence-in-the-wild/">RoboColosseum: Evaluating Physical Intelligence at Scale In-The-Wild</a></em>.</li>
-  <li><span class="list-date">Nov 2026</span>Our paper <em><a href="https://allenai.org/blog/molmoact2">MolmoAct2</a></em> won <span class="news-highlight">Best Paper Award</span> at <a href="https://actiongapworkshop.github.io/">TAG</a> @ CoRL 2026.</li>
+  <li><span class="list-date">Nov 2026</span>Our paper <em><a href="https://allenai.org/blog/molmoact2">MolmoAct2</a></em> won <b>Best Paper Award</b> at <a href="https://actiongapworkshop.github.io/">TAG</a> @ CoRL 2026.</li>
   <li><span class="list-date">Nov 2026</span>Honored to be selected as the <a href="https://www.corl.org/program/outstanding-reviewers-and-acs/">CoRL 2026 Outstanding Reviewer</a>!</li>
   <li><span class="list-date">Oct 2026</span>Our paper <em><a href="https://touch-scale.github.io/">TouchScale: 500 Hours of Human Vision and Touch for Visual-Tactile Learning</a></em> has been preprinted to arXiv.</li>
-  <li><span class="list-date">Sep 2026</span>Our papers <em><a href="https://allenai.org/blog/molmoact2">MolmoAct2</a></em> and <em><a href="https://allenai.org/blog/molmobot-robot-manipulation">MolmoB0T</a></em> have been selected as <span class="news-highlight">Spotlight</span> and <span class="news-highlight">Oral</span> in <a href="https://www.corl.org/">CoRL 2026</a>.</li>
+  <li><span class="list-date">Sep 2026</span>Our papers <em><a href="https://allenai.org/blog/molmoact2">MolmoAct2</a></em> and <em><a href="https://allenai.org/blog/molmobot-robot-manipulation">MolmoB0T</a></em> have been selected as <b>Spotlight</b> and <b>Oral</b> in <a href="https://www.corl.org/">CoRL 2026</a>.</li>
   <li><span class="list-date">Sep 2026</span>We released a blog post on <em><a href="https://bingaochen.github.io/Astra-on-RoboMME/">Can Astra Solve RoboMME without Breaking the Bank?</a></em>.</li>
   <li><span class="list-date">Sep 2026</span>Our papers <em><a href="https://allenai.org/blog/molmoact2">MolmoAct2</a></em> and <em><a href="https://allenai.org/blog/molmobot-robot-manipulation">MolmoB0T</a></em> have been accepted to <a href="https://www.corl.org/">CoRL 2026</a>.</li>
   <li><span class="list-date">Jun 2026</span>Our paper <em><a href="https://jimntu.github.io/FailSafe/">FailSafe: Reasoning and Recovery from Failures in Vision-Language-Action Models</a></em> has been accepted to <a href="https://2026.ieee-iros.org/">IROS 2026</a>.</li>
-  <li><span class="list-date">Jun 2026</span>Our paper <em><a href="https://allenai.org/blog/molmobot-robot-manipulation">MolmoB0T</a></em> won <span class="news-highlight">Best Paper Awards</span> at <a href="https://sites.google.com/view/icra-2026-sdrl-workshop/papers">SDRL</a>, <a href="https://icra2026vlapipeline.github.io/">VLA Pipeline</a>, and <a href="https://icra-beyond-teleop.github.io/index.html#accepted/">Beyond Teleoperation</a> @ ICRA 2026.</li>
+  <li><span class="list-date">Jun 2026</span>Our paper <em><a href="https://allenai.org/blog/molmobot-robot-manipulation">MolmoB0T</a></em> won <b>Best Paper Awards</b> at <a href="https://sites.google.com/view/icra-2026-sdrl-workshop/papers">SDRL</a>, <a href="https://icra2026vlapipeline.github.io/">VLA Pipeline</a>, and <a href="https://icra-beyond-teleop.github.io/index.html#accepted/">Beyond Teleoperation</a> @ ICRA 2026.</li>
   <li><span class="list-date">May 2026</span>We are launching <em><a href="https://allenai.org/blog/molmoact2">MolmoAct2: Action Reasoning Models for Real-World Deployment</a></em>.</li>
   <li><span class="list-date">Mar 2026</span>We are launching <em><a href="https://allenai.org/blog/molmobot-robot-manipulation">MolmoB0T: Large-Scale Simulation Enables Zero-Shot Manipulation</a></em>.</li>
   <li><span class="list-date">Feb 2026</span>Our paper <em><a href="https://rd-vla.github.io/">Recurrent-Depth VLA: Implicit Test-Time Compute Scaling of Vision-Language-Action Models via Latent Iterative Reasoning</a></em> has been preprinted to arXiv.</li>
   <li><span class="list-date">Jan 2026</span>Our paper <em><a href="https://allenai.org/blog/molmoact">MolmoAct</a></em> has been accepted to <a href="https://2026.ieee-icra.org/">ICRA 2026</a>.</li>
   <li><span class="list-date">Dec 2025</span>Honored to be selected as the <a href="https://cra.org/crn/2026/01/2025-26-cra-outstanding-undergraduate-researcher-award-recipients-announced/">CRA Outstanding Undergraduate Researcher Award</a> Awardee 2026 (8 Awardees in North America)!</li>
   <li><span class="list-date">Oct 2025</span>Our paper <em><a href="https://allenai.org/blog/molmoact">MolmoAct</a></em> has been featured by <a href="https://docs.google.com/presentation/d/1xiLl0VdrlNMAei8pmaX4ojIOfej6lhvZbOIK7Z6C-Go/edit?slide=id.g379a362bd85_0_90#slide=id.g379a362bd85_0_90/">State of AI Report 2025</a>.</li>
-  <li><span class="list-date">Sep 2025</span>Our paper <em><a href="https://sam2act.github.io/">SAM2Act</a></em> has been accepted to <a href="https://rememberl-corl25.github.io/">RemembeRL @ CoRL 2025</a> and selected as <span class="news-highlight">Best Paper Award</span>.</li>
-  <li><span class="list-date">Sep 2025</span>Our paper <em><a href="https://allenai.org/blog/molmoact">MolmoAct</a></em> has been selected as <span class="news-highlight">Best Paper Award Nominee and Runner-up</span> at <a href="https://sites.google.com/stanford.edu/corldata25/accepted-contributions/">Data</a> and <a href="https://rational-robots.github.io/">Rational Robots</a> @ CoRL 2025.</li>
+  <li><span class="list-date">Sep 2025</span>Our paper <em><a href="https://sam2act.github.io/">SAM2Act</a></em> has been accepted to <a href="https://rememberl-corl25.github.io/">RemembeRL @ CoRL 2025</a> and selected as <b>Best Paper Award</b>.</li>
+  <li><span class="list-date">Sep 2025</span>Our paper <em><a href="https://allenai.org/blog/molmoact">MolmoAct</a></em> has been selected as <b>Best Paper Award Nominee and Runner-up</b> at <a href="https://sites.google.com/stanford.edu/corldata25/accepted-contributions/">Data</a> and <a href="https://rational-robots.github.io/">Rational Robots</a> @ CoRL 2025.</li>
   <li><span class="list-date">Aug 2025</span>We are launching <em><a href="https://allenai.org/blog/molmoact">MolmoAct: Action Reasoning Models that can Reason in Space</a></em>.</li>
   <li><span class="list-date">Jul 2025</span>Received the UW <a href="https://www.cs.washington.edu/academics/undergraduate/student-resources/scholarships-awards/#allen">CSE Award for Excellence Scholarship</a> 2025.</li>
   <li><span class="list-date">Jun 2025</span>Received the UW CSE <a href="https://www.cs.washington.edu/academics/undergraduate/student-resources/scholarships-awards/senior-thesis-award/">Best Senior Thesis Award</a> Honorable Mention 2025 (2nd Place).</li>
@@ -59,6 +59,8 @@ My research interests lie broadly in robot learning. In particular, I focus on d
   <li class="resume-entry">
     <p class="resume-entry__heading">MolmoAct2: Action Reasoning Models for Real-World Deployment</p>
     <ul class="resume-entry__details">
+      <li><span class="list-date">Nov 2026</span>Best Paper Presentation at <a href="https://actiongapworkshop.github.io/">TAG @ CoRL 2026</a></li>
+      <li><span class="list-date">Nov 2026</span>Lightning Talk at <a href="https://bitrobot.ai/">BitRobot</a> Booth @ CoRL 2026</li>
       <li><span class="list-date">Jun 2026</span>Invited Talk at <a href="https://cohere.com/research">Cohere Labs</a> Hosted by <a href="https://www.linkedin.com/in/cole-harrison-ai/">Cole Harrison</a></li>
       <li><span class="list-date">Jun 2026</span>Invited Talk at <a href="https://www.youtube.com/@RoboPapers">RoboPaper Podcast</a> Hosted by Dr <a href="https://cpaxton.github.io/">Chris Paxton</a></li>
       <li><span class="list-date">May 2026</span>Invited Talk at <a href="https://raivn.cs.washington.edu/">UW RAIVN Lab</a> Hosted by Prof <a href="https://ranjaykrishna.com/">Ranjay Krishna</a></li>
@@ -81,8 +83,8 @@ My research interests lie broadly in robot learning. In particular, I focus on d
   <li class="resume-entry">
     <p class="resume-entry__heading">SAM2Act: Integrating Visual Foundation Model with A Memory Architecture for Robotic Manipulation</p>
     <ul class="resume-entry__details">
-      <li><span class="list-date">Jun 2025</span>Oral Presentation at <a href="https://foundation-models-meet-embodied-agents.github.io/cvpr2025/">FMEA @ CVPR 2025</a> Hosted by Prof <a href="https://limanling.github.io/">Manling Li</a></li>
-      <li><span class="list-date">Apr 2025</span>Oral Presentation at <a href="https://www.robot-learning.ml/2025/">WRL @ ICLR 2025</a> Hosted by Prof <a href="https://dhruvshah.me/">Dhruv Shah</a></li>
+      <li><span class="list-date">Jun 2025</span>Oral Presentation at <a href="https://foundation-models-meet-embodied-agents.github.io/cvpr2025/">FMEA @ CVPR 2025</a></li>
+      <li><span class="list-date">Apr 2025</span>Oral Presentation at <a href="https://www.robot-learning.ml/2025/">WRL @ ICLR 2025</a></li>
       <li><span class="list-date">Feb 2025</span>Invited Talk at <a href="https://raivn.cs.washington.edu/">UW RAIVN Lab</a> Hosted by Prof <a href="https://ranjaykrishna.com/">Ranjay Krishna</a></li>
       <li><span class="list-date">Feb 2025</span>Invited Talk at <a href="https://rse-lab.cs.washington.edu/">UW Robotics and State Estimation Lab</a> Hosted by Prof <a href="https://homes.cs.washington.edu/~fox/">Dieter Fox</a></li>
     </ul>
@@ -192,7 +194,7 @@ My research interests lie broadly in robot learning. In particular, I focus on d
 
 ## Awards {#awards}
 - <span class="list-date">2026</span>Best Paper Award at [TAG](https://actiongapworkshop.github.io/) @ CoRL 2026 (with [MolmoAct2](https://allenai.org/blog/molmoact2/))
-- <span class="list-date">2026</span>[CoRL 2026 Outstanding Reviewer](https://www.corl.org/program/outstanding-reviewers-and-acs)
+- <span class="list-date">2026</span>[CoRL 2026 Outstanding Reviewer](https://www.corl.org/program/outstanding-reviewers-and-acs) Award
 - <span class="list-date">2026</span>Best Paper Awards at [SDRL](https://sites.google.com/view/icra-2026-sdrl-workshop/papers), [VLA Pipeline](https://icra2026vlapipeline.github.io/), and [Beyond Teleoperation](https://icra-beyond-teleop.github.io/index.html#accepted/) @ ICRA 2026 (with [MolmoB0T](https://allenai.org/blog/molmobot-robot-manipulation/))
 - <span class="list-date">2026</span>[CRA Outstanding Undergraduate Researcher Award](https://cra.org/crn/2026/01/2025-26-cra-outstanding-undergraduate-researcher-award-recipients-announced/) Awardee (8 Awardees in North America)
 - <span class="list-date">2025</span>UW CSE [Madrona People’s Choice Award](https://www.geekwire.com/2025/inside-the-uw-allen-school-six-grand-challenges-shaping-the-future-of-computer-science/) (with [MolmoAct](https://allenai.org/blog/molmoact/))
