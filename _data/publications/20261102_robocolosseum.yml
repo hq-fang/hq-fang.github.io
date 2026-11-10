@@ -64,7 +64,7 @@ links:
   - label: Code
     kind: code
     url: 'https://github.com/RoboColosseum/RoboColosseum'
-    stars: 5
+    stars: 10
   - label: Website
     kind: website
     url: 'https://robocolosseum.ai/'
@@ -85,4 +85,5 @@ links:
     url: 'https://x.com/hq_fang/status/2118107864665587726'
 citation:
   provider: googlescholar
+  google_scholar_id: 'O-D4QqsAAAAJ:3fE2CSJIrl8C'
   id: 'arXiv:2611.02497'
