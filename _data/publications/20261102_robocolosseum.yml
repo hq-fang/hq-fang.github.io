@@ -64,7 +64,7 @@ links:
   - label: Code
     kind: code
     url: 'https://github.com/RoboColosseum/RoboColosseum'
-    stars: 10
+    stars: 12
   - label: Website
     kind: website
     url: 'https://robocolosseum.ai/'
