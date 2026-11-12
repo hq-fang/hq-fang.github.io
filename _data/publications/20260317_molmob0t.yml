@@ -66,11 +66,11 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/pdf/2603.16861'
-    citations: 16
+    citations: 17
   - label: Code (Data)
     kind: code
     url: 'https://github.com/allenai/molmospaces'
-    stars: 517
+    stars: 518
   - label: Code (Models)
     kind: code
     url: 'https://github.com/allenai/MolmoBot'
