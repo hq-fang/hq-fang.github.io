@@ -22,7 +22,9 @@ jobs:
       - name: set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
+          # latest 3.2.x: newer runner images only ship the latest patch release, so the exact
+          # version in .ruby-version (3.2.10) stopped being available on ubuntu-26.04
+          ruby-version: '3.2'
 
       - name: jitter before API calls
         shell: bash
