@@ -28,7 +28,13 @@
   footer {
     @include clearfix;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    /* Space priority as the window narrows:
+       1) the map keeps its full size (= the text's height, see .page__footer-map) and the
+          copyright wraps instead, between phrases;
+       2) only once the text can't wrap any further (each phrase on its own line =
+          min-content) does the map shrink, down to 130px. */
+    /* map column: 130px .. full map width (text height 5.732em + 10px, at 640:330) */
+    grid-template-columns: minmax(min-content, 1fr) minmax(130px, calc((5.732em + 10px) * 640 / 330));
     grid-template-areas:
       "sitemap map"
       "follow map"
@@ -39,19 +45,11 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 1em;
-    max-width: 100%;
-    padding: 0 clamp(1em, 4vw, 2.75em) 1em;
-
-    @include breakpoint($large) {
-      padding-left: 27px;
-      padding-right: 54px;
-    }
-
-    @include breakpoint($x-large) {
-      max-width: $x-large;
-      padding-left: 70px;
-      padding-right: 140px;
-    }
+    padding-top: 0;
+    padding-bottom: 1em;
+    /* same width + side padding as the page and menu bar (_mixins.scss), so the footer
+       lines up with them at every window size instead of switching at 925px / 1280px */
+    @include page-frame;
   }
 
   a {
@@ -76,6 +74,11 @@
   align-self: end;
   font-family: $global-font-family;
   font-size: $type-size-7;
+}
+
+/* copyright line: breaks between these phrases on narrow windows, never inside one */
+.page__footer-phrase {
+  white-space: nowrap;
 }
 
 .page__footer-sitemap {
@@ -126,16 +129,24 @@
 .page__footer-map {
   grid-area: map;
   float: none;
-  width: 210px;
-  max-width: 210px;
-  min-height: 0;
+  /* Full size = exactly as tall as the text beside it: Sitemap (1.6em line) + icons row
+     (0.84em text, 1.6 line height, 5px padding top and bottom, 0.42em gap) + two copyright
+     lines (0.74em text, 1.6 line height) = 5.732em + 10px. It keeps that size unless the
+     column is narrower (see grid-template-columns above); then it scales down, keeping its
+     640:330 shape. */
+  width: 100%; /* the column is at most the full size (grid-template-columns above) */
+  height: auto;
+  aspect-ratio: 640 / 330;
+  max-width: none;
   margin: 0 0 0 auto;
   justify-self: end;
-  align-self: end;
+  align-self: start; /* top-aligned with "Sitemap" */
 
   .visitor-map-link {
     display: block;
     width: 100%;
+    height: 100%;
+    box-sizing: border-box;
     text-decoration: none;
     overflow: hidden;
     border-radius: 12px;
@@ -155,7 +166,8 @@
   .visitor-map-image {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     border: 0;
     border-radius: 12px;
     box-shadow: none;
@@ -176,25 +188,37 @@
   .page__footer-map {
     float: none;
     clear: none;
-    width: 180px;
-    max-width: 180px;
     margin-top: 0;
     margin-left: auto;
     margin-right: 0;
     justify-self: end;
-    align-self: end;
-  }
-}
-
-@media (max-width: 560px) {
-  .page__footer-map {
-    width: 138px;
-    max-width: 138px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .page__footer-map .visitor-map-link {
     transition: none;
+  }
+}
+
+/* Only on the very narrowest screens, where even the smallest map and the copyright split
+   into phrases no longer fit side by side: put the map under the text. */
+@media (max-width: 320px) {
+  .page__footer footer {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "sitemap"
+      "follow"
+      "copyright"
+      "map";
+  }
+
+  .page__footer-map {
+    justify-self: start;
+    align-self: start;
+    width: 180px;
+    height: auto;
+    min-height: 0;
+    margin: 0.9em 0 0;
   }
 }

@@ -2,26 +2,27 @@
    DARK THEME
    ========================================================================== */
 
-/* Color codes used for the theme */
+/* Color codes used for the theme: warm charcoal ground, off-white text and a soft lavender
+   accent -- lower contrast and no blue cast, easier on the eyes than near-black/near-white */
 $gray                       : #7a8288;
 $dark-gray                  : mix(#000, $gray, 40%);
 $darker-gray                : mix(#000, $gray, 60%);
 $light-gray                 : mix(#fff, $gray, 50%);
-$brand-bg-dark              : #0F1117;
-$brand-card-dark            : #171B22;
-$brand-surface-dark         : #1C2230;
-$brand-text-dark            : #F3F5F8;
-$brand-text-light-dark      : #C7CDD8;
-$brand-text-muted-dark      : #98A2B3;
-$brand-accent-dark          : #8F7AE5;
-$brand-accent-soft-dark     : #6FA4FF;
-$brand-border-dark          : #2A3140;
-$brand-section-tint-dark    : #20283A;
-$brand-footer-dark          : #171B22;
+$brand-bg-dark              : #1B1A1F;
+$brand-card-dark            : #222027;
+$brand-surface-dark         : #26242C;
+$brand-text-dark            : #E7E4DE;
+$brand-text-light-dark      : #B9B5AE;
+$brand-text-muted-dark      : #8F8B85;
+$brand-accent-dark          : #BCA6E8;
+$brand-accent-soft-dark     : #A08AD4;
+$brand-border-dark          : #302E36;
+$brand-section-tint-dark    : #26242C;
+$brand-footer-dark          : #1F1E24;
 $brand-accent-strong-dark   : mix(#fff, $brand-accent-dark, 18%);
 $brand-link-dark            : #{$brand-accent-dark};
-$brand-link-hover-dark      : #{$brand-accent-soft-dark};
-$brand-link-visited-dark    : #{mix($brand-accent-dark, $brand-accent-soft-dark, 72%)};
+$brand-link-hover-dark      : #D7C9F4;
+$brand-link-visited-dark    : #{$brand-accent-dark};
 
 /* Color codes used for the site */
 $danger-color               : #ee5f5b;
@@ -37,7 +38,7 @@ $global-transition          : all 0.2s ease-in-out;
 $masthead-height            : 70px;
 $navicon-width              : 28px;
 $navicon-height             : 4px;
-$sidebar-link-max-width     : 200px;
+$sidebar-link-max-width     : 180px; /* left author bar width (desktop) */
 $sidebar-screen-min-width   : 1024px;
 
 /* Dark theme for the site */
@@ -65,7 +66,7 @@ html[data-theme="dark"] {
     --global-section-tint-color         : #{$brand-section-tint-dark};
     --global-surface-color              : #{$brand-surface-dark};
     --global-chrome-bg-color            : #{$brand-card-dark};
-    --global-glass-bg-color             : rgba(15, 17, 23, 0.78);
-    --global-glass-bg-color-strong      : rgba(23, 27, 34, 0.88);
-    --global-glass-border-color         : rgba(42, 49, 64, 0.9);
+    --global-glass-bg-color             : rgba(27, 26, 31, 0.82);
+    --global-glass-bg-color-strong      : rgba(34, 32, 39, 0.92);
+    --global-glass-border-color         : rgba(48, 46, 54, 0.9);
 }

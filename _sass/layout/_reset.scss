@@ -8,11 +8,9 @@ html {
   /* apply a natural box layout model to all elements */
   box-sizing: border-box;
   background-color: var(--global-bg-color);
-  font-size: 17px;
-
-  @include breakpoint($medium) {
-    font-size: 17px;
-  }
+  /* 17px; on narrow windows it eases down to 16px (from ~850px wide down to 360px), so
+     everything sized in rem/em, text and spacing, shrinks a little with the window */
+  font-size: clamp(16px, calc(16px + (100vw - 360px) / 490), 17px);
 
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;

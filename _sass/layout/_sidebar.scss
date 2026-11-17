@@ -13,9 +13,9 @@
   @include clearfix();
   margin-bottom: 1em;
 
-  @media (orientation: portrait) {
-    margin-top: 1em;
-  }
+  /* (The theme's `@media (orientation: portrait) { margin-top: 1em }` is gone: it moved the
+     photo column down 16px whenever the window got taller than wide, so resizing near that
+     point made it jump.) */
 
   /* #main is a flex item now (sticky footer), so this margin no longer collapses into
      #main's own top margin -- drop it to keep the original spacing */
@@ -111,7 +111,7 @@
   }
 
   img {
-    max-width: 175px;
+    max-width: 150px; /* avatar size in the left author bar */
     border-radius: 50%;
 
     @include breakpoint($large) {
@@ -317,7 +317,7 @@
     width: 100%;
     max-width: none;
     margin-right: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -331,15 +331,17 @@
 }
 
 @media screen and (max-width: #{$sidebar-screen-min-width - 1px}) {
+  /* photo + text, centered as one block on the screen */
   .author-profile {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1.1rem;
   }
 
   .author__details {
     display: flex;
-    flex: 1 1 auto;
+    flex: 0 1 auto;
     min-width: 0;
     flex-direction: column;
     justify-content: center;
@@ -351,11 +353,15 @@
     flex: 0 0 min(150px, 35.3vw);
     width: min(150px, 35.3vw);
     min-width: min(150px, 35.3vw);
+    /* the desktop column's 0.8rem gap under the photo starts at the theme's 925px breakpoint,
+       not at this layout's; without this the name, icons and page moved at 925px */
+    margin-bottom: 0;
   }
 
+  /* same ring as the desktop column: a 1px border with a 5px gap around the photo */
   .author__avatar img {
-    padding: 0;
-    border: 0;
+    padding: 5px;
+    border: 1px solid var(--global-border-color);
   }
 
   .author__content {
@@ -469,5 +475,24 @@ html[data-theme="dark"] {
       border-color: transparent;
       box-shadow: none;
     }
+  }
+}
+
+/* Mobile / tablet profile: larger text next to the photo (tune the sizes here) */
+@media screen and (max-width: #{$sidebar-screen-min-width - 1px}) {
+  .sidebar .author__name {
+    font-size: 1.5rem;
+  }
+
+  .sidebar .author__bio {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .author__urls .fa,
+  .author__urls .fab,
+  .author__urls .fas,
+  .author__urls .ai {
+    font-size: 1.2rem;
   }
 }

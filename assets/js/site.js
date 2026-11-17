@@ -1,12 +1,13 @@
 /*
  * Site behaviour -- plain JavaScript, no dependencies, loaded with `defer`.
  *
- *   theme toggle . priority ("greedy") navigation . current-section highlight .
+ *   theme toggle . current-section highlight .
  *   collapsible news . publication view switch . lazy publication videos .
  *   visitor-map theme sync . e-mail de-obfuscation . MathJax / Mermaid / Plotly on demand
  *
- * The initial colour theme is applied by an inline script in _includes/head.html (before
- * first paint); everything here is progressive enhancement, so the page already looks right
+ * The initial colour theme is applied by an inline script in _includes/head.html, and the
+ * priority ("greedy") navigation by one in _includes/masthead.html, both before first
+ * paint; everything here is progressive enhancement, so the page already looks right
  * while this file is still downloading on a slow connection.
  */
 (() => {
@@ -53,119 +54,6 @@
     });
   };
 
-  /* ------------------------------------------------------ greedy navigation */
-
-  // Moves masthead links that don't fit into a dropdown, right to left.
-  const initGreedyNav = () => {
-    const nav = $("#site-nav");
-    if (!nav) {
-      return;
-    }
-    const button = $(":scope > button", nav);
-    const visible = $(".visible-links", nav);
-    const hidden = $(".hidden-links", nav);
-    const tail = $(":scope > .persist.tail", visible);
-    const breaks = [];
-
-    const movable = () => $$(":scope > li:not(.persist)", visible);
-    // Content-box width, measured exactly like jQuery's .width() so links collapse into the
-    // menu at the same widths as before.
-    const width = (element) => {
-      const style = window.getComputedStyle(element);
-      let value = parseFloat(style.width) || 0;
-      if (style.boxSizing === "border-box") {
-        value -= parseFloat(style.paddingLeft) + parseFloat(style.paddingRight) +
-          parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth);
-      }
-      return value;
-    };
-    const availableSpace = () =>
-      button.classList.contains("hidden") ? width(nav) : width(nav) - width(button) - 30;
-
-    const setOpen = (open) => {
-      hidden.classList.toggle("hidden", !open);
-      button.classList.toggle("close", open);
-      button.setAttribute("aria-expanded", String(open));
-    };
-
-    const update = () => {
-      let space = availableSpace();
-      if (width(visible) > space) {
-        while (width(visible) > space && movable().length > 0) {
-          breaks.push(width(visible));
-          const items = movable();
-          hidden.insertBefore(items[items.length - 1], hidden.firstChild);
-          button.classList.remove("hidden");
-          space = availableSpace();
-        }
-      } else {
-        while (breaks.length > 0 && space > breaks[breaks.length - 1]) {
-          const item = hidden.firstElementChild;
-          if (tail) {
-            visible.insertBefore(item, tail);
-          } else {
-            visible.appendChild(item);
-          }
-          breaks.pop();
-        }
-        if (breaks.length === 0) {
-          button.classList.add("hidden");
-          setOpen(false);
-        }
-      }
-      button.setAttribute("data-count", String(breaks.length));
-
-      // As the old jQuery version did: offset the page (and the fixed sidebar) by the
-      // masthead's actual height.
-      const masthead = $(".masthead");
-      const sidebar = $(".sidebar");
-      if (masthead) {
-        const height = `${parseFloat(window.getComputedStyle(masthead).height)}px`;
-        document.body.style.paddingTop = height;
-        if (sidebar) {
-          sidebar.style.paddingTop = height;
-        }
-      }
-    };
-
-    let frame = 0;
-    const scheduleUpdate = () => {
-      if (!frame) {
-        frame = window.requestAnimationFrame(() => {
-          frame = 0;
-          update();
-        });
-      }
-    };
-
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-      setOpen(hidden.classList.contains("hidden"));
-    });
-    hidden.addEventListener("click", (event) => {
-      if (event.target.closest("a")) {
-        setOpen(false);
-      }
-    });
-    document.addEventListener("click", (event) => {
-      if (!nav.contains(event.target)) {
-        setOpen(false);
-      }
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-      }
-    });
-    window.addEventListener("resize", scheduleUpdate);
-
-    // The original script made its first measurement with the button visible; do the same
-    // (within this synchronous call, so nothing flashes) so links collapse at the same widths.
-    button.classList.remove("hidden");
-    update();
-    root.classList.add("nav-ready");
-  };
-
   /* --------------------------------------------- current-section highlight */
 
   const initSectionHighlight = () => {
@@ -203,14 +91,22 @@
       });
     };
 
+    /* Everything is measured with getBoundingClientRect (on-screen pixels): the page has
+       `zoom: 0.9` on <html>, and offsetTop / scrollHeight are unzoomed CSS pixels, which
+       don't match the scroll position (the highlight lagged and never reached the end). */
+    /* A link clicked near the end of the page (e.g. Work on a tall screen, where its heading
+       can't scroll to the top) keeps its highlight at the bottom until the user scrolls. */
+    let clicked = null;
     const compute = () => {
-      const marker = window.scrollY + masthead.offsetHeight + Math.min(window.innerHeight * 0.18, 140);
-      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
-        return sections[sections.length - 1].id;
+      const marker = masthead.getBoundingClientRect().bottom + Math.min(window.innerHeight * 0.18, 140);
+      if (document.body.getBoundingClientRect().bottom <= window.innerHeight + 2) {
+        const target = clicked && document.getElementById(clicked);
+        const top = target ? target.getBoundingClientRect().top : -1;
+        return top >= 0 && top < window.innerHeight ? clicked : sections[sections.length - 1].id;
       }
       let current = sections[0].id;
       sections.forEach((section) => {
-        if (section.element.offsetTop <= marker) {
+        if (section.element.getBoundingClientRect().top <= marker) {
           current = section.id;
         }
       });
@@ -227,7 +123,13 @@
       }
     };
 
-    links.forEach((link) => link.addEventListener("click", () => setActive(link.dataset.navSection)));
+    links.forEach((link) => link.addEventListener("click", () => {
+      clicked = link.dataset.navSection;
+      setActive(clicked);
+    }));
+    ["wheel", "touchstart", "keydown"].forEach((type) => {
+      window.addEventListener(type, () => { clicked = null; }, { passive: true });
+    });
     window.addEventListener("scroll", scheduleUpdate, { passive: true });
     window.addEventListener("resize", scheduleUpdate);
     window.addEventListener("hashchange", scheduleUpdate);
@@ -238,46 +140,21 @@
 
   /* ------------------------------------------------------- collapsible news */
 
-  // The list is collapsed by CSS from the first paint (see .is-collapsed in _home.scss);
-  // this only wires up the toggle button.
+  // CSS collapses the list from the first paint (.is-collapsed in _home.scss) and the inline
+  // script in _includes/head.html handles the button. Here: if CSS hides nothing (a short list),
+  // drop the collapsed state and the button.
   const initCollapsibleLists = () => {
-    $$("[data-collapsible-list]").forEach((list) => {
-      const toggle = $$("[data-list-toggle]").find((candidate) => candidate.getAttribute("aria-controls") === list.id);
-      if (!toggle) {
+    $$("[data-collapsible-list].is-collapsed").forEach((list) => {
+      const hidesSomething = Array.from(list.children).some((item) => window.getComputedStyle(item).display === "none");
+      if (hidesSomething) {
         return;
       }
-      const label = $(".home-news__toggle-label", toggle);
-      const expandLabel = list.dataset.expandLabel || "Show more";
-      const collapseLabel = list.dataset.collapseLabel || "Show less";
-      const limit = Number.parseInt(list.dataset.initialLimit || "5", 10);
-
-      if (list.children.length <= limit) {
-        list.classList.remove("is-collapsed");
-        toggle.hidden = true;
-        return;
-      }
-
-      const render = () => {
-        const expanded = !list.classList.contains("is-collapsed");
-        toggle.setAttribute("aria-expanded", String(expanded));
-        if (label) {
-          label.textContent = expanded ? collapseLabel : expandLabel;
-        } else {
-          toggle.setAttribute("aria-label", expanded ? collapseLabel : expandLabel);
-        }
-      };
-
-      toggle.addEventListener("click", () => {
-        const collapsing = !list.classList.contains("is-collapsed");
-        list.classList.toggle("is-collapsed", collapsing);
-        render();
-        // After collapsing a long list, keep the button in view instead of leaving the
-        // reader stranded further down the page.
-        if (collapsing && toggle.getBoundingClientRect().top < 0) {
-          toggle.scrollIntoView({ block: "center" });
-        }
-      });
-      render();
+      list.classList.remove("is-collapsed");
+      $$("[data-list-toggle]")
+        .filter((toggle) => toggle.getAttribute("aria-controls") === list.id)
+        .forEach((toggle) => {
+          (toggle.closest(".home-news__controls") || toggle).style.display = "none";
+        });
     });
   };
 
@@ -310,6 +187,21 @@
   // never download unless that tab is opened. With Data Saver, a 2G connection or
   // "reduce motion", the poster simply stays.
   const initPublicationVideos = () => {
+    const rateOf = (video) => {
+      const rate = Number.parseFloat(video.dataset.playbackRate || "1");
+      return Number.isFinite(rate) && rate > 0 ? rate : 1;
+    };
+
+    // Teasers embedded without a poster autoplay natively; just keep their speed.
+    $$("video.publication-card__video[data-playback-rate]:not([data-src])").forEach((video) => {
+      const apply = () => {
+        video.defaultPlaybackRate = rateOf(video);
+        video.playbackRate = rateOf(video);
+      };
+      ["loadedmetadata", "play"].forEach((name) => video.addEventListener(name, apply));
+      apply();
+    });
+
     const videos = $$("video.publication-card__video[data-src]");
     if (videos.length === 0) {
       return () => {};
@@ -319,11 +211,6 @@
     const constrained = connection.saveData === true || /(^|-)2g$/.test(connection.effectiveType || "");
     const reducedMotion = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : { matches: false };
     const inView = new Set();
-
-    const rateOf = (video) => {
-      const rate = Number.parseFloat(video.dataset.playbackRate || "1");
-      return Number.isFinite(rate) && rate > 0 ? rate : 1;
-    };
 
     const play = (video) => {
       if (constrained || reducedMotion.matches || video.closest("[hidden]")) {
@@ -382,6 +269,14 @@
     }
 
     document.addEventListener("visibilitychange", refresh);
+    // Autoplay can be refused until the first user gesture (e.g. iOS Low Power Mode): retry then.
+    const retryOnce = () => {
+      refresh();
+      window.removeEventListener("touchstart", retryOnce);
+      window.removeEventListener("pointerdown", retryOnce);
+    };
+    window.addEventListener("touchstart", retryOnce, { passive: true });
+    window.addEventListener("pointerdown", retryOnce, { passive: true });
     if (reducedMotion.addEventListener) {
       reducedMotion.addEventListener("change", refresh);
     }
@@ -449,11 +344,11 @@
     });
 
   const initOnDemandLibraries = () => {
-    const content = $(".page__content") || document.body;
+    const report = (what) => (error) => console.error(`[site.js] ${what} failed to load`, error);
 
-    // kramdown turns $$...$$ into \(...\) / \[...\]
-    if (/\\\(|\\\[|\$\$/.test(content.textContent)) {
-      loadScript("https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js", { id: "MathJax-script" }).catch(() => {});
+    // kramdown turns $$...$$ into \(...\) / \[...\] (titles and headers count too)
+    if (/\\\(|\\\[|\$\$/.test(document.body.textContent)) {
+      loadScript("https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js", { id: "MathJax-script" }).catch(report("MathJax"));
     }
 
     if ($("code.language-mermaid")) {
@@ -462,7 +357,7 @@
           mermaid.initialize({ startOnLoad: false, theme: currentTheme() === "dark" ? "dark" : "default" });
           return mermaid.run({ querySelector: "code.language-mermaid" });
         })
-        .catch(() => {});
+        .catch(report("Mermaid"));
     }
 
     const plotlyBlocks = $$("pre > code.language-plotly");
@@ -473,17 +368,21 @@
       ])
         .then(([, themes]) => {
           plotlyBlocks.forEach((block) => {
-            const data = JSON.parse(block.textContent);
-            block.parentElement.classList.add("hidden");
-            const chart = document.createElement("div");
-            block.parentElement.after(chart);
-            const template = currentTheme() === "dark" ? themes.plotlyDarkLayout : themes.plotlyLightLayout;
-            data.layout = data.layout || {};
-            data.layout.template = data.layout.template ? { ...template, ...data.layout.template } : template;
-            window.Plotly.react(chart, data.data, data.layout);
+            try {
+              const data = JSON.parse(block.textContent);
+              block.parentElement.classList.add("hidden");
+              const chart = document.createElement("div");
+              block.parentElement.after(chart);
+              const template = currentTheme() === "dark" ? themes.plotlyDarkLayout : themes.plotlyLightLayout;
+              data.layout = data.layout || {};
+              data.layout.template = data.layout.template ? { ...template, ...data.layout.template } : template;
+              window.Plotly.react(chart, data.data, data.layout);
+            } catch (error) {
+              console.error("[site.js] could not render a plotly block", error, block);
+            }
           });
         })
-        .catch(() => {});
+        .catch(report("Plotly"));
     }
   };
 
@@ -500,7 +399,6 @@
   };
 
   run("theme", initTheme);
-  run("navigation", initGreedyNav);
   run("section highlight", initSectionHighlight);
   run("collapsible lists", initCollapsibleLists);
   const refreshVideos = run("videos", initPublicationVideos) || (() => {});

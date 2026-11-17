@@ -8,14 +8,14 @@ $dark-gray                  : mix(#000, $gray, 40%);
 $darker-gray                : mix(#000, $gray, 60%);
 $light-gray                 : mix(#fff, $gray, 50%);
 $lighter-gray               : mix(#fff, $gray, 90%);
-$brand-bg                   : #FCFBFF;
-$brand-card                 : #DCEBFF;
-$brand-accent               : #6E59CF;
-$brand-accent-soft          : #9A8CFF;
+$brand-bg                   : #FBFAF8; /* slightly warm off-white (was cool lavender-white #FCFBFF) */
+$brand-card                 : #ECE6F6; /* soft purple tint for chips, buttons, highlights (was light blue #DCEBFF) */
+$brand-accent               : #6C4EAD; /* warm royal purple (was bright violet #6E59CF) */
+$brand-accent-soft          : #9D87D0;
 $brand-text                 : #2E2A3B;
 $brand-text-light           : #686277;
-$brand-border               : #E7E3F4;
-$brand-footer               : #f2f3f3;
+$brand-border               : #E9E6E2;
+$brand-footer               : #F3F1EE;
 $brand-surface              : mix(#fff, $brand-card, 48%);
 $brand-accent-strong        : mix(#000, $brand-accent, 16%);
 $brand-link                 : #{$brand-accent};
@@ -37,7 +37,7 @@ $global-transition          : all 0.2s ease-in-out;
 $masthead-height            : 70px;
 $navicon-width              : 28px;
 $navicon-height             : 4px;
-$sidebar-link-max-width     : 200px;
+$sidebar-link-max-width     : 180px; /* left author bar width (desktop) */
 $sidebar-screen-min-width   : 1024px;
 
 /* Default light theme for the site */
@@ -64,7 +64,7 @@ $sidebar-screen-min-width   : 1024px;
     --global-section-tint-color         : #{$brand-card};
     --global-surface-color              : #{$brand-surface};
     --global-chrome-bg-color            : #{$brand-bg};
-    --global-glass-bg-color             : rgba(252, 251, 255, 0.78);
-    --global-glass-bg-color-strong      : rgba(252, 251, 255, 0.9);
-    --global-glass-border-color         : rgba(231, 227, 244, 0.9);
+    --global-glass-bg-color             : rgba(251, 250, 248, 0.78);
+    --global-glass-bg-color-strong      : rgba(251, 250, 248, 0.9);
+    --global-glass-border-color         : rgba(233, 230, 226, 0.9);
 }

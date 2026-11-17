@@ -28,9 +28,9 @@
   justify-content: center;
   gap: 0.4rem;
   padding: 0.42rem 0.92rem;
-  border: 1px solid rgba(110, 89, 207, 0.16);
+  border: 1px solid rgba(108, 78, 173, 0.16);
   border-radius: 999px;
-  background: rgba(220, 235, 255, 0.62);
+  background: rgba(236, 230, 246, 0.62);
   color: var(--global-text-color);
   font-family: $sans-serif;
   font-size: 0.82rem;
@@ -42,9 +42,9 @@
 
   &:hover {
     color: var(--global-text-color);
-    border-color: rgba(154, 140, 255, 0.36);
-    background: rgba(154, 140, 255, 0.16);
-    box-shadow: 0 10px 18px rgba(110, 89, 207, 0.12);
+    border-color: rgba(157, 135, 208, 0.46);
+    background: rgba(157, 135, 208, 0.23);
+    box-shadow: 0 10px 18px rgba(108, 78, 173, 0.12);
     transform: translateY(-1px);
   }
 }
@@ -63,15 +63,15 @@
 }
 
 .publication-switch__button.is-active {
-  border-color: rgba(154, 140, 255, 0.36);
-  background: rgba(154, 140, 255, 0.16);
+  border-color: rgba(157, 135, 208, 0.46);
+  background: rgba(157, 135, 208, 0.23);
   color: var(--global-text-color);
   box-shadow: none;
 }
 
 .publication-switch__button.is-active:hover {
-  border-color: rgba(154, 140, 255, 0.36);
-  background: rgba(154, 140, 255, 0.16);
+  border-color: rgba(157, 135, 208, 0.46);
+  background: rgba(157, 135, 208, 0.23);
   color: var(--global-text-color);
   box-shadow: none;
 }
@@ -110,6 +110,17 @@
 .page__content .resume-entry__line {
   margin: 0;
   text-align: left;
+}
+
+/* Services group headings look like the publication / school / company names */
+.page__content .resume-entry__heading {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 22px;
+
+  strong {
+    font-weight: inherit;
+  }
 }
 
 .resume-entry__line + .resume-entry__line {
@@ -217,14 +228,49 @@
   line-height: 24px;
 }
 
+/* All dates on the page share one size (same as .list-date in news, talks, services, awards) */
+.page__content .education-entry__date,
+.page__content .industry-entry__date {
+  font-size: 0.9em;
+}
+
+/* Dates on the right: education next to the school name, work next to each role */
+.education-entry__body {
+  position: relative;
+}
+
+.page__content .education-entry__title {
+  padding-right: 9rem;
+}
+
+.page__content .education-entry__date {
+  position: absolute;
+  top: 0;
+  right: 0;
+  white-space: nowrap;
+}
+
+.page__content .industry-entry__role {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.industry-entry__role .industry-entry__date {
+  font-style: normal;
+  white-space: nowrap;
+}
+
+/* same line spacing as the rest of the page's text (1.6) */
 .education-entry__line {
   font-size: 0.9rem;
-  line-height: 24px;
+  line-height: 1.6;
 }
 
 .industry-entry__line {
   font-size: 0.9rem;
-  line-height: 24px;
+  line-height: 1.6;
 }
 
 .education-entry__line + .education-entry__line,
@@ -252,22 +298,122 @@
   right: -0.2rem;
   bottom: 0;
   height: 2.75rem;
-  background: linear-gradient(to bottom, rgba(252, 251, 255, 0), var(--global-bg-color) 82%);
+  background: linear-gradient(to bottom, rgba(251, 250, 248, 0), var(--global-bg-color) 82%);
   pointer-events: none;
 }
 
 .home-news__list li {
   position: relative;
-  margin-bottom: 0.65rem;
-  padding-left: 1.1rem;
+  margin: 0;
+  padding: 0.55rem 6.5rem 0.55rem 0;
+  border-bottom: 1px solid var(--global-border-color);
 }
 
-.home-news__list li::before {
-  content: "\2022";
+/* date on the right of each row (talks, awards); news puts it first, see below */
+.list-date {
   position: absolute;
+  top: 0.55rem;
+  right: 0;
+  color: var(--global-text-color-light);
+  font-size: 0.9em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Clean lists: no bullets, hairline-separated rows (awards, services, entry details) */
+.page__content h2#awards + ul > li,
+.page__content .resume-section > .resume-entry {
+  margin: 0;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+/* Lines only go between rows: no line under the last row (same as publications, education,
+   work). A collapsed news/talks list shows rows 1-5, so row 5 is its last visible row. */
+.home-news__list > li:last-child,
+html.js .home-news__list.is-collapsed > li:nth-child(5),
+.page__content h2#awards + ul > li:last-child,
+.page__content .resume-section > .resume-entry:last-child {
+  border-bottom: 0;
+}
+
+/* The heading's underline is the first row's divider: drop the extra space above row 1
+   so it matches the spacing between the other rows. */
+.page__content h2 + .home-news__list,
+.page__content h2 + .resume-section,
+.page__content h2#awards + ul {
+  margin-top: 0;
+}
+
+.page__content h2 + .home-news__list > li:first-child,
+.page__content h2 + .resume-section > li:first-child,
+.page__content h2#awards + ul > li:first-child {
+  padding-top: 0;
+}
+
+.page__content h2 + .home-news__list > li:first-child .list-date,
+.page__content h2#awards + ul > li:first-child .list-date {
   top: 0;
+}
+
+/* Highlights in news (awards, spotlight, oral): bold, in the site's accent purple */
+.news-highlight {
+  color: var(--global-accent-color);
+  font-weight: 700;
+}
+
+/* Academic services: year on the right of each line */
+html body .page__content ul.resume-entry__details > li {
+  position: relative;
+  padding-right: 5rem;
+  text-align: left; /* short lines: justified text leaves big gaps on phones */
+}
+
+.page__content .resume-entry__details .list-date {
+  top: 0;
+}
+
+/* News: date first, then the description */
+.home-news__list#news-list > li {
+  padding: 0.55rem 0 0.55rem 5.5rem;
+}
+
+.home-news__list#news-list .list-date {
+  right: auto;
   left: 0;
-  color: var(--global-accent-color-soft);
+}
+
+.page__content h2 + .home-news__list#news-list > li:first-child {
+  padding-top: 0;
+}
+
+/* Awards: year on the right */
+.page__content h2#awards + ul > li {
+  position: relative;
+  padding-right: 4rem;
+}
+
+.page__content h2#awards + ul > li::before,
+.page__content ul.resume-section > li::before,
+html body .page__content ul.resume-entry__details > li::before,
+html body .page__content ul.education-entry__details > li::before,
+html body .page__content ul.industry-entry__details > li::before {
+  content: none !important; /* beats the bullet rules in _base.scss */
+}
+
+.page__content h2#awards + ul > li,
+.page__content ul.resume-section > li,
+html body .page__content ul.resume-entry__details > li,
+html body .page__content ul.education-entry__details > li,
+html body .page__content ul.industry-entry__details > li {
+  padding-left: 0 !important;
+}
+
+html body .page__content ul.resume-entry__details > li,
+html body .page__content ul.education-entry__details > li,
+html body .page__content ul.industry-entry__details > li {
+  margin-bottom: 0.15rem;
+  color: var(--global-text-color-light);
 }
 
 .home-talks__meta {
@@ -279,6 +425,7 @@
 
 /* Collapsed news: items after the 5th are hidden from the very first paint (html.js is
    set synchronously in <head>), instead of being moved out by JavaScript after load.
+   To show more or fewer items before "Expand", change the 6 in nth-child(n+6) below.
    The control margins/paddings below reproduce the old two-list layout exactly (the
    hidden extra list had margin-top: -1rem when collapsed and margin-bottom: 1.5rem when
    expanded; the controls had margin-top: 0.35rem). */
@@ -291,8 +438,7 @@ html:not(.js) .home-news__list.is-collapsed::after {
 }
 
 .home-news__list.is-collapsed + .home-news__controls {
-  margin-top: -1rem;
-  padding-top: 0.35rem;
+  margin-top: 0.6rem;
   pointer-events: none;
 }
 
@@ -301,8 +447,7 @@ html:not(.js) .home-news__list.is-collapsed::after {
 }
 
 .home-news__list[data-collapsible-list]:not(.is-collapsed) + .home-news__controls {
-  margin-top: 1.5rem;
-  padding-top: 0.65rem;
+  margin-top: 0.6rem;
 }
 
 .home-news__list[data-collapsible-list]:not(.is-collapsed) > li:nth-child(n+6) {
@@ -340,9 +485,9 @@ html:not(.js) .home-news__list.is-collapsed::after {
   width: 2.2rem;
   height: 2.2rem;
   padding: 0;
-  border: 1px solid rgba(110, 89, 207, 0.16);
+  border: 1px solid rgba(108, 78, 173, 0.16);
   border-radius: 999px;
-  background: rgba(220, 235, 255, 0.62);
+  background: rgba(236, 230, 246, 0.62);
   color: var(--global-text-color);
   cursor: pointer;
   box-shadow: none;
@@ -350,10 +495,10 @@ html:not(.js) .home-news__list.is-collapsed::after {
 }
 
 .home-news__toggle:hover {
-  border-color: rgba(154, 140, 255, 0.36);
+  border-color: rgba(157, 135, 208, 0.46);
   color: var(--global-text-color);
-  background: rgba(154, 140, 255, 0.16);
-  box-shadow: 0 10px 18px rgba(110, 89, 207, 0.12);
+  background: rgba(157, 135, 208, 0.23);
+  box-shadow: 0 10px 18px rgba(108, 78, 173, 0.12);
   transform: translateY(-1px);
 }
 
@@ -398,7 +543,7 @@ html:not(.js) .home-news__list.is-collapsed::after {
   overflow: hidden;
   aspect-ratio: 16 / 9;
   border-radius: 14px;
-  background: linear-gradient(180deg, rgba(220, 235, 255, 0.52), rgba(220, 235, 255, 0.9));
+  background: linear-gradient(180deg, rgba(236, 230, 246, 0.52), rgba(236, 230, 246, 0.9));
   box-shadow: 0 14px 32px rgba(36, 42, 66, 0.14);
   transition: box-shadow 0.24s ease;
 }
@@ -426,7 +571,7 @@ html:not(.js) .home-news__list.is-collapsed::after {
   object-fit: cover;
 }
 
-.publication-card__video {
+.publication-card__video[data-src] {
   position: relative;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -456,6 +601,13 @@ html:not(.js) .home-news__list.is-collapsed::after {
 .page__content .publication-card__authors,
 .page__content .publication-card__venue-line {
   margin: 0;
+}
+
+/* Author lists a little smaller than the rest of the card. (Needs the .page__content prefix
+   to beat `.page__content p { font-size: 1em }`, which the 0.9rem below never did.) */
+.page__content .publication-card__authors {
+  font-size: 0.9rem;
+  line-height: 20px;
 }
 
 .publication-card__title {
@@ -524,7 +676,7 @@ html:not(.js) .home-news__list.is-collapsed::after {
     border: 0;
     border-radius: 0;
     background: transparent;
-    color: #8568ae;
+    color: var(--global-accent-color);
     font: inherit;
   }
 }
@@ -542,8 +694,8 @@ html:not(.js) .home-news__list.is-collapsed::after {
   padding: 2px 8px;
   border: 1px solid transparent;
   border-radius: 999px;
-  border-color: rgba(154, 140, 255, 0.18);
-  background: rgba(154, 140, 255, 0.12);
+  border-color: rgba(157, 135, 208, 0.18);
+  background: rgba(157, 135, 208, 0.12);
   color: var(--global-accent-color);
   font-size: 0.74rem;
   font-weight: 600;
@@ -553,9 +705,9 @@ html:not(.js) .home-news__list.is-collapsed::after {
 .publication-card__venue-note--award,
 .publication-card__venue-note--spotlight {
   border-width: 1.5px;
-  border-color: rgba(143, 120, 181, 0.24);
-  background: rgba(246, 241, 253, 0.98);
-  color: #8568ae;
+  border-color: rgba(108, 78, 173, 0.24);
+  background: rgba(108, 78, 173, 0.08);
+  color: var(--global-accent-color);
 }
 
 .publication-card__links {
@@ -571,9 +723,9 @@ html:not(.js) .home-news__list.is-collapsed::after {
   gap: 5px;
   height: 23px;
   padding: 0 8px;
-  border: 1px solid rgba(110, 89, 207, 0.16);
+  border: 1px solid rgba(108, 78, 173, 0.16);
   border-radius: 999px;
-  background: rgba(220, 235, 255, 0.62);
+  background: rgba(236, 230, 246, 0.62);
   color: var(--global-text-color);
   font-size: 13px;
   font-weight: 500;
@@ -605,10 +757,10 @@ html:not(.js) .home-news__list.is-collapsed::after {
 }
 
 .publication-chip:hover {
-  border-color: rgba(154, 140, 255, 0.36);
-  background: rgba(154, 140, 255, 0.16);
+  border-color: rgba(157, 135, 208, 0.46);
+  background: rgba(157, 135, 208, 0.23);
   color: var(--global-text-color);
-  box-shadow: 0 10px 18px rgba(110, 89, 207, 0.12);
+  box-shadow: 0 10px 18px rgba(108, 78, 173, 0.12);
   text-decoration: none !important;
   transform: translateY(-1px);
 }
@@ -657,7 +809,7 @@ html:not(.js) .home-news__list.is-collapsed::after {
   margin-top: 0.9rem;
   padding: 0.38rem 0.72rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, rgba(220, 235, 255, 0.95), rgba(220, 235, 255, 0.74));
+  background: linear-gradient(135deg, rgba(236, 230, 246, 0.95), rgba(236, 230, 246, 0.74));
   color: var(--global-accent-color);
   font-size: 0.82rem;
   font-weight: 600;
@@ -665,18 +817,14 @@ html:not(.js) .home-news__list.is-collapsed::after {
 
 html[data-theme="dark"] {
   .home-news__list.is-collapsed::after {
-    background: linear-gradient(to bottom, rgba(15, 17, 23, 0), var(--global-bg-color) 82%);
-  }
-
-  .home-news__list li::before {
-    color: var(--global-accent-color-soft);
+    background: linear-gradient(to bottom, rgba(27, 26, 31, 0), var(--global-bg-color) 82%);
   }
 
   .publication-switch__button,
   .publication-chip,
   .home-news__toggle {
-    border-color: rgba(42, 49, 64, 0.96);
-    background: rgba(23, 27, 34, 0.94);
+    border-color: rgba(52, 50, 59, 0.96);
+    background: rgba(36, 34, 42, 0.94);
     color: var(--global-text-color);
     box-shadow: none;
   }
@@ -684,26 +832,26 @@ html[data-theme="dark"] {
   .publication-switch__button:hover,
   .publication-chip:hover,
   .home-news__toggle:hover {
-    border-color: rgba(111, 164, 255, 0.24);
-    background: rgba(32, 40, 58, 0.92);
+    border-color: rgba(188, 166, 232, 0.45);
+    background: rgba(188, 166, 232, 0.16);
     color: var(--global-text-color);
     box-shadow: 0 10px 20px rgba(4, 8, 16, 0.2);
   }
 
   .publication-switch__button.is-active,
   .publication-switch__button.is-active:hover {
-    border-color: rgba(143, 122, 229, 0.42);
-    background: rgba(143, 122, 229, 0.12);
+    border-color: rgba(188, 166, 232, 0.42);
+    background: rgba(188, 166, 232, 0.12);
     color: var(--global-accent-color);
     box-shadow: none;
   }
 
   .publication-card {
-    border-bottom-color: rgba(42, 49, 64, 0.96);
+    border-bottom-color: rgba(52, 50, 59, 0.96);
   }
 
   .publication-card__media-frame {
-    background: linear-gradient(180deg, rgba(28, 34, 48, 0.92), rgba(23, 27, 34, 0.98));
+    background: linear-gradient(180deg, rgba(40, 38, 46, 0.92), rgba(36, 34, 42, 0.98));
     box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3);
   }
 
@@ -713,7 +861,7 @@ html[data-theme="dark"] {
 
   .education-entry,
   .industry-entry {
-    border-bottom-color: rgba(42, 49, 64, 0.96);
+    border-bottom-color: rgba(52, 50, 59, 0.96);
   }
 
   .education-entry__media-frame,
@@ -757,23 +905,23 @@ html[data-theme="dark"] {
   }
 
   .publication-card__venue-note {
-    border-color: rgba(42, 49, 64, 0.96);
-    background: rgba(23, 27, 34, 0.94);
+    border-color: rgba(52, 50, 59, 0.96);
+    background: rgba(36, 34, 42, 0.94);
     color: var(--global-accent-color-soft);
   }
 
   .publication-card__venue-note--award,
   .publication-card__venue-note--spotlight {
     border-width: 1.5px;
-    border-color: rgba(143, 122, 229, 0.32);
-    background: rgba(143, 122, 229, 0.14);
-    color: var(--global-text-color);
+    border-color: rgba(188, 166, 232, 0.32);
+    background: rgba(188, 166, 232, 0.14);
+    color: var(--global-accent-color);
   }
 
   .publication-card__venue-line--primary:not(.publication-card__venue-line--inline-note) .publication-card__venue-note {
     border: 0;
     background: transparent;
-    color: var(--global-text-color);
+    color: var(--global-accent-color);
   }
 
   .publication-chip__metric,
@@ -783,8 +931,8 @@ html[data-theme="dark"] {
   }
 
   .publication-card__highlight {
-    border: 1px solid rgba(143, 122, 229, 0.18);
-    background: linear-gradient(135deg, rgba(28, 34, 48, 0.98), rgba(23, 27, 34, 0.94));
+    border: 1px solid rgba(188, 166, 232, 0.18);
+    background: linear-gradient(135deg, rgba(40, 38, 46, 0.98), rgba(36, 34, 42, 0.94));
     color: var(--global-accent-color);
   }
 }
@@ -815,5 +963,18 @@ html[data-theme="dark"] {
   .education-entry__media,
   .industry-entry__media {
     max-width: 100%;
+  }
+
+  /* Stacked layout: give the work logos the same box height as the education logos
+     (136px wide at 2:1 = 68px; 160px wide at 40:17 = 68px), so both sections have the
+     same space between logo and text. */
+  .industry-entry__media-frame {
+    aspect-ratio: 40 / 17;
+  }
+
+  /* The NVIDIA image is 16:9 with wide empty margins; scale it up so the logo stays
+     the same size as in the taller desktop box. */
+  .industry-entry__logo--nvidia {
+    transform: scale(1.6);
   }
 }

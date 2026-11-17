@@ -20,13 +20,14 @@ var inputs = Array(CommandLine.arguments.dropFirst())
 if inputs.isEmpty {
     let dir = "images/publications"
     let names = (try? FileManager.default.contentsOfDirectory(atPath: dir)) ?? []
-    inputs = names.filter { $0.hasSuffix(".mp4") }.sorted().map { "\(dir)/\($0)" }
+    inputs = names.filter { $0.lowercased().hasSuffix(".mp4") }.sorted().map { "\(dir)/\($0)" }
 }
 if inputs.isEmpty {
     FileHandle.standardError.write("no .mp4 files found (run from the repo root)\n".data(using: .utf8)!)
     exit(1)
 }
 
+var failures = 0
 for path in inputs {
     let url = URL(fileURLWithPath: path)
     let generator = AVAssetImageGenerator(asset: AVURLAsset(url: url))
@@ -44,7 +45,11 @@ for path in inputs {
         try jpeg.write(to: out)
         print("\(out.path)  \(frame.width)x\(frame.height)  \(jpeg.count / 1024) KB")
     } catch {
+        // keep going so one bad file doesn't leave the others without posters
         FileHandle.standardError.write("failed: \(path): \(error)\n".data(using: .utf8)!)
-        exit(1)
+        failures += 1
     }
+}
+if failures > 0 {
+    exit(1)
 }

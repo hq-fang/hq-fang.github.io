@@ -51,3 +51,32 @@
     display: table;
   }
 }
+/*
+   Page frame: the width and side padding shared by the page (#main) and the menu bar, so the
+   two always line up. It shrinks in this order as the window gets narrower:
+     1. wide screens: the photo column + an 856px text column, centered; the outer margins shrink;
+     2. then the side padding shrinks (70px left / 140px right -> 16px) while the text column
+        stays 856px wide;
+     3. below $sidebar-screen-min-width (padding at its limit) the photo moves on top and the
+        page is one centered 856px column; its margins shrink, then the column fills the
+        window (the text size also eases down a little, see html in _reset.scss).
+   Tune: $page-text-width (text column), the 70px / 140px max paddings, the 16px min.
+   ========================================================================== */
+
+$page-text-width: 856px; /* text column width on wide screens (CSS px, before the 0.9 zoom) */
+$page-gutter: clamp(1em, 4vw, 2.75em); /* side padding once the photo is on top */
+
+@mixin page-frame {
+  max-width: calc(#{$page-text-width} + 2 * #{$page-gutter});
+  padding-left: $page-gutter;
+  padding-right: $page-gutter;
+
+  @media screen and (min-width: $sidebar-screen-min-width) {
+    max-width: $x-large;
+    /* 100% = window width; the paddings take what's left over after the photo column, its
+       gap and the text column, in a 1:2 ratio, between 16px and 70px / 140px */
+    $columns: calc(#{$sidebar-link-max-width} + 2rem + #{$page-text-width});
+    padding-left: clamp(16px, calc((100% - #{$columns}) / 3), 70px);
+    padding-right: clamp(16px, calc((100% - #{$columns}) * 2 / 3), 140px);
+  }
+}

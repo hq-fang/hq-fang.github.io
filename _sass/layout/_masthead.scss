@@ -25,19 +25,10 @@
   &__inner-wrap {
     @include container;
     @include clearfix;
-    padding: 0.5em clamp(1em, 4vw, 2.75em);
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    @include page-frame; /* same width + side padding as the page, so the links line up */
     font-family: $sans-serif-narrow;
-
-    @include breakpoint($large) {
-      padding-left: 27px;
-      padding-right: 54px;
-    }
-
-    @include breakpoint($x-large) {
-      max-width: $x-large;
-      padding-left: 70px;
-      padding-right: 140px;
-    }
 
     nav {
       z-index: 10;
