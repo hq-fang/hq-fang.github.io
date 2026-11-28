@@ -46,7 +46,7 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/abs/2610.10288'
-    citations: 2
+    citations: 3
   - label: Code
     kind: code
     url: 'https://github.com/phai-lab/touchscale'

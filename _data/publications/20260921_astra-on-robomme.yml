@@ -18,7 +18,7 @@ links:
   - label: Paper
     kind: paper
     url: 'https://arxiv.org/abs/2611.06184'
-    citations: 3
+    citations: 4
   - label: Code
     kind: code
     url: 'https://github.com/bingaochen/Astra-on-RoboMME'
